@@ -1,0 +1,5344 @@
+/* =========================================================
+🍉 FRUIT MERGE POP
+RESPONSIVE TROPICAL 3D GAME UI
+========================================================= */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --cream: #fff8df;
+    --cream-light: #fffdf0;
+    --cream-dark: #f7d99a;
+
+    --gold: #ffc72c;
+    --gold-light: #ffe66b;
+    --gold-dark: #d58b19;
+
+    --brown: #6a2d18;
+    --brown-dark: #4a2114;
+
+    --red: #ff4053;
+    --red-light: #ff6872;
+    --red-dark: #c91f35;
+
+    --green: #78b82e;
+    --green-dark: #4f8524;
+    --green-light: #a9d84c;
+
+    --sky: #18c5dc;
+    --sky-light: #8ee6dc;
+
+    --shadow: rgba(75, 43, 19, 0.30);
+}
+
+
+/* =========================================================
+RESET
+========================================================= */
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden !important;
+}
+
+
+/* =========================================================
+BODY
+========================================================= */
+
+body {
+    min-height: 100vh;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family:
+        "Trebuchet MS",
+        "Arial Rounded MT Bold",
+        Arial,
+        sans-serif;
+
+    color: var(--brown-dark);
+
+    background: #74cfd0;
+
+    overflow: hidden !important;
+}
+
+
+/* =========================================================
+APP
+========================================================= */
+
+#app {
+    position: relative;
+    z-index: 2;
+
+    /*
+        Original portrait ratio.
+
+        The game stays 9:16 but automatically
+        becomes smaller when the screen is shorter.
+    */
+    width: min(
+        100vw,
+        480px,
+        calc(100vh * 0.5625)
+    );
+
+    height: min(
+        100vh,
+        calc(100vw * 1.7777778)
+    );
+
+    aspect-ratio: 9 / 16;
+
+    max-width: 100vw;
+    max-height: 100vh;
+
+    overflow: hidden;
+
+    padding: 0;
+
+    display: flex;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+SCREEN
+========================================================= */
+
+.screen {
+    width: 100%;
+    height: 100%;
+
+    min-width: 0;
+    min-height: 0;
+
+    position: relative;
+
+    text-align: center;
+
+    overflow: hidden !important;
+}
+
+
+.hidden {
+    display: none !important;
+}
+
+
+/* =========================================================
+SHARED GAME FRAME
+========================================================= */
+
+.home-screen,
+#gameScreen,
+#missionsScreen,
+#dailyScreen,
+#settingsScreen,
+#resultsScreen {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    min-width: 0;
+    min-height: 0;
+
+    overflow: hidden !important;
+
+    border-radius: 0;
+
+    box-shadow: none;
+
+    border: none;
+}
+
+
+/* =========================================================
+🏝️ HOME SCREEN
+========================================================= */
+
+.home-screen {
+    height: 100%;
+
+    padding: 55px 18px 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    isolation: isolate;
+
+    background-image:
+        url("assets/images/tropical-home-bg.jpg");
+
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+
+/* =========================================================
+NO GLASS OVERLAY
+========================================================= */
+
+.home-screen::after {
+    display: none !important;
+}
+
+
+/* =========================================================
+HOME CONTENT
+========================================================= */
+
+.home-screen > * {
+    position: relative;
+    z-index: 3;
+}
+
+
+/* =========================================================
+HOME TOP BAR
+========================================================= */
+
+.home-topbar {
+    position: absolute;
+
+    top: 15px;
+    left: 14px;
+    right: 14px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    z-index: 10;
+}
+
+
+/* =========================================================
+COIN DISPLAY
+========================================================= */
+
+.coin-display {
+    min-width: 118px;
+    height: 48px;
+
+    padding: 4px 12px 4px 7px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    border-radius: 30px;
+
+    border: 3px solid #e8b943;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fffef5 0%,
+            #ffe6a0 100%
+        );
+
+    color: var(--brown);
+
+    font-size: 19px;
+
+    font-weight: 900;
+
+    box-shadow:
+        0 5px 0 #bd7f1c,
+        0 8px 16px rgba(70,47,19,.20),
+        inset 0 3px 0 #fff;
+}
+
+
+.coin-icon {
+    width: 34px;
+    height: 34px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #fff3a3 0 8%,
+            transparent 9%
+        ),
+        linear-gradient(
+            145deg,
+            #ffd95a,
+            #efa41a
+        );
+
+    border: 2px solid #c88413;
+
+    font-size: 20px;
+
+    box-shadow:
+        inset 0 3px 0 rgba(255,255,255,.75),
+        0 2px 0 rgba(151,92,12,.25);
+}
+
+
+/* =========================================================
+SETTINGS BUTTON
+========================================================= */
+
+.settings-btn {
+    width: 48px;
+    height: 48px;
+
+    display: grid;
+
+    place-items: center;
+
+    padding: 0;
+
+    border-radius: 50%;
+
+    border: 3px solid #e8b943;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fffef5,
+            #ffe5a1
+        );
+
+    color: var(--brown);
+
+    font-size: 23px;
+
+    box-shadow:
+        0 5px 0 #bd7f1c,
+        0 8px 16px rgba(70,47,19,.20),
+        inset 0 3px 0 #fff;
+}
+
+
+/* =========================================================
+HOME BRAND
+========================================================= */
+
+.home-brand {
+    width: 100%;
+
+    margin: 62px 0 0;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+FRUIT LOGO HOLDER
+========================================================= */
+
+.fruit-logo {
+    width: 240px;
+    height: 125px;
+
+    margin: 0 auto -12px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+
+    background: transparent;
+
+    box-shadow: none;
+
+    font-size: 0;
+}
+
+
+/* =========================================================
+   🍓 3D GAME LOGO
+========================================================= */
+
+.home-brand h1,
+h1 {
+    margin: 0 auto;
+
+    width: fit-content;
+    max-width: 100%;
+
+    font-size: 0;
+
+    line-height: .82;
+
+    font-weight: 900;
+
+    letter-spacing: -4px;
+
+    text-transform: uppercase;
+
+    /* Adds a subtle overall depth */
+    transform: perspective(500px) rotateX(2deg);
+}
+
+
+/* =========================================================
+   🍍 FRUITY
+========================================================= */
+
+.home-brand h1::before {
+    content: "FRUITY";
+
+    display: block;
+
+    font-size: clamp(48px, 11vw, 68px);
+
+    color: #ffd52f;
+
+    -webkit-text-stroke: 4px #6f2b12;
+
+    /* Strong layered 3D depth */
+    text-shadow:
+        0 2px 0 #ffef75,
+        0 5px 0 #f5a51c,
+        0 8px 0 #d87513,
+        0 11px 0 #8b3513,
+        0 14px 0 #64220f,
+        0 17px 16px rgba(62,31,13,.42);
+}
+
+
+/* =========================================================
+   🍓 MERGE POP
+========================================================= */
+
+.home-brand h1::after {
+    content: "MERGE POP";
+
+    display: block;
+
+    margin-top: 9px;
+
+    font-size: clamp(42px, 10vw, 60px);
+
+    color: #ff888b;
+
+    -webkit-text-stroke: 4px #6d1d17;
+
+    /* Strong layered 3D depth */
+    text-shadow:
+        0 2px 0 #ffb7b8,
+        0 5px 0 #f45d63,
+        0 8px 0 #d63b38,
+        0 11px 0 #8e251d,
+        0 14px 0 #641914,
+        0 17px 16px rgba(62,31,13,.42);
+}
+
+
+/* =========================================================
+   ✨ SUBTITLE
+========================================================= */
+
+.subtitle {
+    margin: 10px 0 0;
+
+    color: #4f2210;
+
+    font-size: 14px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+
+    text-shadow:
+        0 2px 0 rgba(255,255,255,.85);
+}
+
+/* =========================================================
+PLAY BUTTON
+========================================================= */
+
+.play-button {
+    position: relative;
+
+    width: 88%;
+
+    max-width: 360px;
+
+    min-height: 68px;
+
+    margin: 88px auto 0;
+
+    border-radius: 40px;
+
+    border: 4px solid #ffd3aa;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ff6972 0%,
+            #ff4054 45%,
+            #e8223b 100%
+        );
+
+    color: white;
+
+    font-size: 27px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+
+    box-shadow:
+        0 7px 0 #a81d2d,
+        0 13px 25px rgba(78,36,20,.30),
+        inset 0 5px 0 rgba(255,255,255,.55),
+        inset 0 -6px 0 rgba(158,17,32,.20);
+
+    text-shadow:
+        0 3px 0 rgba(132,22,28,.45);
+}
+
+
+.play-button:hover {
+    transform: translateY(-2px);
+
+    filter: brightness(1.04);
+}
+
+
+.play-button:active {
+    transform: translateY(5px);
+
+    box-shadow:
+        0 2px 0 #a81d2d,
+        0 6px 12px rgba(78,36,20,.25),
+        inset 0 3px 0 rgba(255,255,255,.35);
+}
+
+
+.play-icon {
+    margin-right: 9px;
+
+    font-size: 26px;
+
+    text-shadow: none;
+}
+
+
+/* =========================================================
+HOME OPTIONS
+========================================================= */
+
+.row-buttons {
+    width: 88%;
+    max-width: 360px;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 14px;
+
+    margin-top: auto;
+}
+
+
+.home-option {
+    min-height: 64px;
+
+    padding: 7px 9px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    border-radius: 20px;
+
+    border: 3px solid #f5dca8;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fffef4 0%,
+            #ffe6a3 100%
+        );
+
+    color: var(--brown);
+
+    font-size: 13px;
+
+    font-weight: 900;
+
+    text-transform: uppercase;
+
+    box-shadow:
+        0 5px 0 #bb7e1e,
+        0 10px 17px rgba(72,48,21,.18),
+        inset 0 3px 0 #fff;
+}
+
+/* =========================================================
+   CENTER LAST HOME BUTTON
+========================================================= */
+
+.row-buttons .home-option:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc(50% - 7px);
+}
+
+.home-option:hover {
+    transform: translateY(-2px);
+}
+
+
+.home-option:active {
+    transform: translateY(4px);
+
+    box-shadow:
+        0 2px 0 #bb7e1e,
+        inset 0 2px 0 #fff;
+}
+
+
+.home-option span {
+    font-size: 27px;
+
+    filter:
+        drop-shadow(0 3px 2px rgba(67,39,17,.20));
+}
+
+
+/* =========================================================
+GENERAL BUTTONS
+========================================================= */
+
+button {
+    border: 0;
+
+    cursor: pointer;
+
+    font-family: inherit;
+
+    font-weight: 800;
+
+    transition:
+        transform .15s ease,
+        filter .15s ease,
+        box-shadow .15s ease;
+}
+
+
+button:disabled {
+    cursor: default;
+
+    opacity: .62;
+}
+
+
+.primary {
+    color: white;
+}
+
+
+/* =========================================================
+🎮 GAME SCREEN — THEME WORLD
+========================================================= */
+
+#gameScreen {
+    width: 100%;
+    height: 100%;
+
+    min-width: 0;
+    min-height: 0;
+
+    padding:
+        clamp(3px, 1vh, 8px)
+        clamp(3px, 1vw, 7px)
+        clamp(5px, 1vh, 10px);
+
+    display: flex;
+
+    flex-direction: column;
+
+    overflow: hidden !important;
+
+    /* THEME BACKGROUND */
+    background-image:
+        var(--current-game-background);
+
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    border-radius: 0;
+
+    box-shadow: none;
+
+    box-sizing: border-box;
+
+    transition:
+        background-image .4s ease;
+}
+
+/* =========================================================
+GAME HEADER
+========================================================= */
+
+.game-header {
+    width: 100%;
+
+    flex: 0 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        clamp(34px, 8vw, 45px)
+        minmax(0, 1fr)
+        minmax(0, 1fr)
+        minmax(0, 1.2fr)
+        clamp(34px, 8vw, 45px);
+
+    gap: clamp(2px, .8vw, 5px);
+
+    align-items: center;
+
+    padding:
+        clamp(2px, .6vh, 5px)
+        clamp(2px, .8vw, 5px)
+        clamp(4px, 1vh, 8px);
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+GAME STAT
+========================================================= */
+
+.game-stat {
+    min-width: 0;
+
+    min-height: 0;
+
+    height: clamp(42px, 6.5vh, 53px);
+
+    padding: clamp(3px, .8vh, 6px);
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    overflow: hidden;
+
+    border-radius: clamp(12px, 3vw, 17px);
+
+    border: 3px solid #f3d69d;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fffef4 0%,
+            #ffe7a6 100%
+        );
+
+    box-shadow:
+        0 5px 0 #b97b1c,
+        0 8px 15px rgba(67,47,21,.16),
+        inset 0 3px 0 #fff;
+
+    font-size: clamp(9px, 2.2vw, 12px);
+}
+
+
+.game-header small {
+    color: #744129;
+
+    font-size: clamp(7px, 1.8vw, 10px);
+
+    font-weight: 900;
+
+    line-height: 1;
+}
+
+
+.game-header b {
+    color: #df3744;
+
+    font-size: clamp(11px, 3vw, 16px);
+
+    font-weight: 900;
+
+    line-height: 1.1;
+}
+
+
+/* =========================================================
+GAME ICON BUTTONS
+========================================================= */
+
+.icon-btn {
+    width: clamp(34px, 8vw, 44px);
+
+    height: clamp(34px, 8vw, 44px);
+
+    padding: 0;
+
+    display: grid;
+
+    place-items: center;
+
+    align-self: center;
+
+    border-radius: 50%;
+
+    border: 3px solid #f4dba5;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fffef4,
+            #ffe5a2
+        );
+
+    color: var(--brown);
+
+    font-size: clamp(15px, 4vw, 20px);
+
+    box-shadow:
+        0 5px 0 #b97b1c,
+        0 8px 15px rgba(72,48,21,.17),
+        inset 0 3px 0 #fff;
+}
+
+
+.game-header .icon-btn:first-child {
+    color: #ed3f50;
+}
+
+
+#pauseButton {
+    background:
+        linear-gradient(
+            180deg,
+            #ff6d74,
+            #e62c41
+        );
+
+    border-color: #ffc5aa;
+
+    color: white;
+
+    box-shadow:
+        0 5px 0 #a82231,
+        0 8px 15px rgba(72,48,21,.17),
+        inset 0 3px 0 rgba(255,255,255,.45);
+}
+
+
+/* =========================================================
+NEXT FRUIT
+========================================================= */
+
+.next {
+    flex: 0 0 auto;
+
+    width: clamp(125px, 40vw, 180px);
+
+    min-height: 0;
+
+    height: clamp(39px, 6vh, 50px);
+
+    margin:
+        1px
+        auto
+        clamp(4px, 1vh, 8px);
+
+    padding: 3px 8px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: clamp(5px, 2vw, 10px);
+
+    box-sizing: border-box;
+
+    border-radius: clamp(15px, 4vw, 20px);
+
+    border: 3px solid #efd29a;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fffef5,
+            #ffe7a6
+        );
+
+    color: var(--brown);
+
+    font-size: 0;
+
+    font-weight: 900;
+
+    box-shadow:
+        0 5px 0 #b77a1c,
+        0 9px 17px rgba(72,48,21,.16),
+        inset 0 3px 0 #fff;
+}
+
+
+.next::before {
+    content: "NEXT";
+
+    font-size: clamp(10px, 3vw, 15px);
+}
+
+
+.next span {
+    font-size: clamp(20px, 6vw, 29px);
+
+    margin-left: 2px;
+
+    line-height: 1;
+}
+
+
+/* =========================================================
+   GAME CANVAS
+========================================================= */
+
+#gameScreen canvas {
+    display: block;
+
+    width: 92%;
+    margin: 0 auto;
+
+    background: #FFF7E9;
+}
+
+/* =========================================================
+   GAME ACTIONS
+========================================================= */
+
+.game-actions {
+    flex: 0 0 auto;
+
+    width: 94%;
+
+    max-width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: clamp(4px, 1.5vw, 8px);
+
+    margin:
+        clamp(5px, 1vh, 10px)
+        auto
+        0;
+
+    box-sizing: border-box;
+}
+
+.game-actions button {
+    min-width: 0;
+
+    min-height: 0;
+
+    height: clamp(43px, 7vh, 58px);
+
+    padding: 4px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: clamp(14px, 4vw, 20px);
+
+    border: 3px solid #efd39c;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fffef4,
+            #ffe5a4
+        );
+
+    color: var(--brown);
+
+    font-size: clamp(9px, 2.5vw, 13px);
+
+    white-space: nowrap;
+
+    box-shadow:
+        0 5px 0 #b77b1d,
+        0 9px 15px rgba(72,48,21,.15),
+        inset 0 3px 0 #fff;
+}
+
+.game-actions button:hover {
+    transform: translateY(-2px);
+}
+
+.game-actions button:active {
+    transform: translateY(4px);
+
+    box-shadow:
+        0 2px 0 #b77b1d,
+        inset 0 2px 0 #fff;
+}
+
+
+/* =========================================================
+   SUBSCREENS
+========================================================= */
+
+#missionsScreen,
+#dailyScreen,
+#settingsScreen,
+#resultsScreen {
+    min-height: 0;
+
+    height: 100%;
+
+    padding: 20px 15px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #49c7c5 0%,
+            #91dcc0 40%,
+            #d4e5a4 68%,
+            #76a447 100%
+        );
+
+    border-radius: 0;
+
+    box-shadow: none;
+}
+
+
+/* =========================================================
+   SUBSCREEN DECORATION
+========================================================= */
+
+#missionsScreen::before,
+#dailyScreen::before,
+#settingsScreen::before,
+#resultsScreen::before {
+    content: "🌿";
+
+    position: absolute;
+
+    top: -25px;
+
+    right: -20px;
+
+    font-size: 115px;
+
+    opacity: .60;
+
+    pointer-events: none;
+
+    filter:
+        drop-shadow(
+            0 7px 5px
+            rgba(36,73,25,.20)
+        );
+}
+
+
+/* =========================================================
+   SUBSCREEN HEADER
+========================================================= */
+
+.subscreen-header {
+    min-height: 55px;
+
+    position: relative;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    margin-bottom: 15px;
+}
+
+.subscreen-header h2,
+h2 {
+    margin: 0;
+
+    color: #ffd33a;
+
+    font-size: 28px;
+
+    font-weight: 900;
+
+    text-transform: uppercase;
+
+    -webkit-text-stroke: 3px #703019;
+
+    text-shadow:
+        0 4px 0 #e28a19,
+        0 6px 0 #703019,
+        0 9px 13px rgba(74,38,18,.28);
+}
+
+/* =========================================================
+BACK BUTTON
+========================================================= */
+
+.back-button {
+    position: absolute;
+
+    left: 0;
+
+    width: 45px;
+    height: 45px;
+
+    padding: 0;
+
+    border-radius: 50%;
+
+    border: 3px solid #efd29a;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fffef4,
+            #ffe5a4
+        );
+
+    color: var(--brown);
+
+    font-size: 21px;
+
+    box-shadow:
+        0 5px 0 #b77a1c,
+        0 8px 15px rgba(72,48,21,.15),
+        inset 0 3px 0 #fff;
+}
+
+
+/* =========================================================
+MISSIONS
+========================================================= */
+
+#missionList {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+
+.mission {
+    position: relative;
+
+    padding: 13px;
+
+    border-radius: 20px;
+
+    border: 3px solid #efd29a;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fffef4,
+            #ffe7a7
+        );
+
+    text-align: left;
+
+    box-shadow:
+        0 5px 0 #b77b1c,
+        0 9px 16px rgba(72,48,21,.13),
+        inset 0 3px 0 #fff;
+}
+
+
+.mission-top {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 10px;
+
+    color: var(--brown);
+
+    font-weight: 900;
+}
+
+
+.bar {
+    height: 11px;
+
+    margin: 9px 0 6px;
+
+    overflow: hidden;
+
+    background: #ead49e;
+
+    border: 2px solid #d1b46d;
+
+    border-radius: 20px;
+}
+
+
+.bar > i {
+    display: block;
+
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff5868,
+            #ffb62d,
+            #83bd35
+        );
+
+    border-radius: inherit;
+
+    box-shadow:
+        inset 0 2px 0 rgba(255,255,255,.35);
+}
+
+
+.mission small {
+    color: #7b5032;
+
+    font-weight: 800;
+}
+
+
+.mission button {
+    float: right;
+
+    margin-top: -22px;
+
+    padding: 6px 12px;
+
+    border-radius: 13px;
+
+    border: 2px solid #ffc0a0;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ff6570,
+            #e62c41
+        );
+
+    color: white;
+
+    box-shadow:
+        0 3px 0 #a82532;
+}
+
+
+/* =========================================================
+DAILY
+========================================================= */
+
+.daily-card {
+    position: relative;
+
+    max-width: 360px;
+
+    margin: 12px auto;
+
+    padding: 24px 18px;
+
+    border-radius: 26px;
+
+    border: 4px solid #efd19a;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fffef4,
+            #ffe5a4
+        );
+
+    box-shadow:
+        0 7px 0 #b77a1c,
+        0 14px 24px rgba(72,48,21,.15),
+        inset 0 3px 0 #fff;
+}
+
+
+.streak {
+    color: #d63b43;
+
+    font-size: 21px;
+
+    font-weight: 900;
+}
+
+
+.reward {
+    margin: 20px 0;
+
+    font-size: 50px;
+
+    font-weight: 900;
+
+    color: #c9851d;
+
+    filter:
+        drop-shadow(0 4px 2px rgba(104,65,19,.16));
+}
+
+
+.daily-card .primary {
+    min-width: 180px;
+
+    min-height: 52px;
+
+    padding: 11px 20px;
+
+    border-radius: 28px;
+
+    border: 3px solid #ffc0a0;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ff6570,
+            #e62b40
+        );
+
+    color: white;
+
+    box-shadow:
+        0 5px 0 #a82431,
+        0 9px 16px rgba(72,48,21,.18),
+        inset 0 3px 0 rgba(255,255,255,.45);
+
+    font-size: 17px;
+}
+
+
+/* =========================================================
+SETTINGS
+========================================================= */
+
+.settings-card {
+    position: relative;
+
+    padding: 6px 16px;
+
+    border-radius: 24px;
+
+    border: 4px solid #efd19a;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fffef4,
+            #ffe5a4
+        );
+
+    box-shadow:
+        0 7px 0 #b77a1c,
+        0 13px 22px rgba(72,48,21,.15),
+        inset 0 3px 0 #fff;
+}
+
+
+.setting-row {
+    min-height: 72px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    border-bottom: 2px solid #efd5a3;
+}
+
+
+.setting-row:last-child {
+    border-bottom: 0;
+}
+
+
+.setting-row div {
+    display: flex;
+
+    flex-direction: column;
+
+    text-align: left;
+}
+
+
+.setting-row strong {
+    color: var(--brown);
+
+    font-size: 16px;
+}
+
+
+.setting-row small {
+    margin-top: 3px;
+
+    color: #986947;
+}
+
+
+.setting-toggle {
+    width: 53px;
+
+    height: 42px;
+
+    padding: 0;
+
+    border-radius: 23px;
+
+    border: 3px solid #e5c17d;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fffef1,
+            #ffd879
+        );
+
+    box-shadow:
+        0 4px 0 rgba(157,98,25,.22),
+        inset 0 2px 0 #fff;
+
+    font-size: 21px;
+}
+
+
+/* =========================================================
+RESULTS
+========================================================= */
+
+#resultsScreen {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+.result-icon {
+    font-size: 70px;
+
+    filter:
+        drop-shadow(0 8px 7px rgba(70,40,18,.20));
+
+    animation: pop .5s ease;
+}
+
+
+#resultsScreen h2 {
+    margin-top: 8px;
+}
+
+
+.big-score {
+    margin: 9px 0;
+
+    font-size: 38px;
+
+    font-weight: 900;
+
+    color: #df3d43;
+
+    text-shadow:
+        0 3px 0 rgba(255,255,255,.65);
+}
+
+
+.new-best {
+    color: #f38d1e;
+
+    font-weight: 900;
+
+    animation: pop .5s ease;
+}
+
+
+#resultsScreen > button {
+    display: block;
+
+    width: min(270px, 90%);
+
+    min-height: 53px;
+
+    margin: 8px auto;
+
+    padding: 11px 17px;
+
+    border-radius: 27px;
+
+    border: 3px solid #efd29a;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fffef3,
+            #ffe7ab
+        );
+
+    color: var(--brown);
+
+    box-shadow:
+        0 5px 0 #b77b1c,
+        0 8px 15px rgba(72,48,21,.14),
+        inset 0 3px 0 #fff;
+}
+
+
+#resultsScreen > .primary {
+    background:
+        linear-gradient(
+            180deg,
+            #ff6570,
+            #e62b40
+        );
+
+    border-color: #ffc0a0;
+
+    color: white;
+
+    box-shadow:
+        0 5px 0 #a82431,
+        0 9px 16px rgba(72,48,21,.18),
+        inset 0 3px 0 rgba(255,255,255,.45);
+}
+
+
+/* =========================================================
+ANIMATION
+========================================================= */
+
+@keyframes pop {
+    0% {
+        transform: scale(.7);
+        opacity: 0;
+    }
+
+    70% {
+        transform: scale(1.08);
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+🖥️ DESKTOP / LARGE SCREEN
+========================================================= */
+
+@media (min-width: 600px) {
+
+    body {
+        background: #74cfd0;
+    }
+
+    #app {
+        width: min(
+            480px,
+            calc(100vh * 0.5625)
+        );
+
+        height: min(
+            100vh,
+            calc(100vw * 1.7777778)
+        );
+
+        aspect-ratio: 9 / 16;
+
+        max-width: 100vw;
+        max-height: 100vh;
+    }
+
+    .home-screen {
+        padding-top: 55px;
+    }
+
+    .home-brand {
+        margin-top: 62px;
+    }
+
+    .home-brand h1::before {
+        font-size: 68px;
+    }
+
+    .home-brand h1::after {
+        font-size: 60px;
+    }
+
+    .play-button {
+        width: 88%;
+        max-width: 360px;
+    }
+
+    .row-buttons {
+        width: 88%;
+        max-width: 360px;
+    }
+
+    .home-tip {
+        width: 88%;
+        max-width: 360px;
+    }
+
+    #gameScreen {
+        width: 100%;
+        height: 100%;
+    }
+
+    .game-header {
+        grid-template-columns:
+            45px
+            minmax(0, 1fr)
+            minmax(0, 1fr)
+            minmax(0, 1.2fr)
+            45px;
+    }
+
+    .game-stat {
+        height: 53px;
+    }
+
+    .icon-btn {
+        width: 44px;
+        height: 44px;
+    }
+
+    .next {
+        width: 180px;
+        height: 50px;
+    }
+
+    .game-actions button {
+        height: 58px;
+    }
+}
+
+
+/* =========================================================
+📱 MOBILE
+========================================================= */
+
+@media (max-width: 599px) {
+
+    html,
+    body {
+        width: 100%;
+        height: 100%;
+
+        overflow: hidden !important;
+    }
+
+    body {
+        align-items: center;
+        justify-content: center;
+    }
+
+    #app {
+        width: 100vw;
+        height: 100vh;
+
+        max-width: 100vw;
+        max-height: 100vh;
+
+        aspect-ratio: auto;
+
+        overflow: hidden;
+    }
+
+    .screen {
+        width: 100%;
+        height: 100%;
+
+        min-height: 0;
+
+        overflow: hidden !important;
+    }
+
+
+    /* =====================================================
+       HOME MOBILE
+    ===================================================== */
+
+    .home-screen {
+        height: 100%;
+
+        min-height: 0;
+
+        padding:
+            54px
+            10px
+            16px;
+
+        background-size: cover;
+
+        background-position: center center;
+
+        background-repeat: no-repeat;
+    }
+
+
+    .home-topbar {
+        top: 11px;
+
+        left: 11px;
+
+        right: 11px;
+    }
+
+
+    .coin-display {
+        min-width: 98px;
+
+        height: 42px;
+
+        font-size: 16px;
+    }
+
+
+    .coin-icon {
+        width: 29px;
+
+        height: 29px;
+
+        font-size: 17px;
+    }
+
+
+    .settings-btn {
+        width: 43px;
+
+        height: 43px;
+
+        font-size: 20px;
+    }
+
+
+    .home-brand {
+        margin-top: 48px;
+
+        margin-bottom: 0;
+    }
+
+
+    .home-brand h1::before {
+        font-size: 47px;
+
+        -webkit-text-stroke-width: 3px;
+    }
+
+
+    .home-brand h1::after {
+        font-size: 40px;
+
+        -webkit-text-stroke-width: 3px;
+    }
+
+
+    .subtitle {
+        font-size: 11px;
+
+        letter-spacing: 1px;
+
+        margin-top: 14px;
+    }
+
+
+    .play-button {
+        width: 90%;
+
+        min-height: 62px;
+
+        margin-top: 65px;
+
+        font-size: 23px;
+    }
+
+
+    .play-icon {
+        font-size: 23px;
+    }
+
+
+    .row-buttons {
+        width: 90%;
+
+        gap: 8px;
+
+        margin-top: auto;
+    }
+
+
+    .home-option {
+        min-height: 60px;
+
+        font-size: 11px;
+
+        border-radius: 18px;
+    }
+
+
+    .home-option span {
+        font-size: 24px;
+    }
+
+
+    .home-tip {
+        width: 90%;
+
+        min-height: 53px;
+
+        margin-top: 12px;
+
+        font-size: 10px;
+    }
+
+
+    /* =====================================================
+       GAME MOBILE
+    ===================================================== */
+
+    #gameScreen {
+        height: 100%;
+
+        min-height: 0;
+
+        padding:
+            clamp(2px, .7vh, 5px)
+            3px
+            clamp(4px, .8vh, 7px);
+
+        overflow: hidden !important;
+    }
+
+
+    .game-header {
+        grid-template-columns:
+            clamp(34px, 9vw, 39px)
+            minmax(0, 1fr)
+            minmax(0, 1fr)
+            minmax(0, 1.15fr)
+            clamp(34px, 9vw, 39px);
+
+        gap: 3px;
+
+        padding:
+            2px
+            3px
+            clamp(3px, .7vh, 7px);
+    }
+
+
+    .game-stat {
+        height: clamp(39px, 6vh, 48px);
+
+        padding: 3px;
+
+        border-radius: 14px;
+    }
+
+
+    .game-header small {
+        font-size: 8px;
+    }
+
+
+    .game-header b {
+        font-size: 13px;
+    }
+
+
+    .icon-btn {
+        width: clamp(34px, 9vw, 38px);
+
+        height: clamp(34px, 9vw, 38px);
+
+        font-size: 16px;
+    }
+
+
+    .next {
+        width: clamp(125px, 42vw, 150px);
+
+        height: clamp(36px, 5.5vh, 45px);
+
+        margin-bottom: clamp(3px, .8vh, 7px);
+    }
+
+
+    .next::before {
+        font-size: 12px;
+    }
+
+
+    .next span {
+        font-size: 24px;
+    }
+
+
+    #gameScreen canvas {
+        width: 100%;
+
+        height: auto;
+
+        max-width: 100%;
+
+        min-height: 0;
+
+        flex: 1 1 auto;
+
+        object-fit: contain;
+
+        border-width: 4px;
+
+        border-radius: 19px;
+    }
+
+
+    .game-actions {
+        width: 94%;
+
+        gap: 6px;
+
+        margin-top: clamp(4px, .8vh, 8px);
+    }
+
+
+    .game-actions button {
+        height: clamp(42px, 6.5vh, 50px);
+
+        min-height: 0;
+
+        border-radius: 17px;
+
+        font-size: 11px;
+    }
+
+
+    /* =====================================================
+       SUBSCREENS MOBILE
+    ===================================================== */
+
+    #missionsScreen,
+    #dailyScreen,
+    #settingsScreen,
+    #resultsScreen {
+        height: 100%;
+
+        min-height: 0;
+
+        padding:
+            17px
+            11px;
+
+        border-radius: 0;
+
+        box-shadow: none;
+    }
+
+
+    .subscreen-header h2,
+    h2 {
+        font-size: 24px;
+    }
+}
+
+
+/* =========================================================
+📱 SHORT DEVICES
+========================================================= */
+
+@media (max-height: 800px) {
+
+    #gameScreen {
+        padding-top: 2px;
+        padding-bottom: 4px;
+    }
+
+    .game-header {
+        padding-top: 2px;
+        padding-bottom: 4px;
+    }
+
+    .game-stat {
+        height: 42px;
+    }
+
+    .icon-btn {
+        width: 36px;
+        height: 36px;
+    }
+
+    .next {
+        height: 38px;
+
+        margin-bottom: 4px;
+    }
+
+    .next span {
+        font-size: 21px;
+    }
+
+    .game-actions {
+        margin-top: 5px;
+    }
+
+    .game-actions button {
+        height: 45px;
+    }
+}
+
+
+/* =========================================================
+📱 VERY SHORT DEVICES
+========================================================= */
+
+@media (max-height: 700px) {
+
+    #gameScreen {
+        padding-top: 1px;
+        padding-bottom: 3px;
+    }
+
+    .game-header {
+        padding-top: 1px;
+        padding-bottom: 2px;
+    }
+
+    .game-stat {
+        height: 38px;
+    }
+
+    .icon-btn {
+        width: 33px;
+        height: 33px;
+
+        font-size: 14px;
+    }
+
+    .next {
+        height: 34px;
+
+        margin-bottom: 3px;
+    }
+
+    .next::before {
+        font-size: 9px;
+    }
+
+    .next span {
+        font-size: 19px;
+    }
+
+    .game-actions {
+        margin-top: 3px;
+
+        gap: 4px;
+    }
+
+    .game-actions button {
+        height: 40px;
+
+        font-size: 9px;
+    }
+}
+
+
+/* =========================================================
+📱 VERY SMALL PHONES
+========================================================= */
+
+@media (max-width: 350px) {
+
+    .home-brand h1::before {
+        font-size: 40px;
+    }
+
+    .home-brand h1::after {
+        font-size: 34px;
+    }
+
+    .subtitle {
+        letter-spacing: .5px;
+    }
+
+    .play-button {
+        width: 93%;
+
+        min-height: 56px;
+
+        font-size: 21px;
+
+        margin-top: 40px;
+    }
+
+    .row-buttons {
+        width: 93%;
+
+        gap: 6px;
+    }
+
+    .home-option {
+        font-size: 9px;
+    }
+
+    .home-option span {
+        font-size: 21px;
+    }
+
+    .game-header {
+        grid-template-columns:
+            34px
+            minmax(0, 1fr)
+            minmax(0, 1fr)
+            minmax(0, 1.1fr)
+            34px;
+    }
+
+    .icon-btn {
+        width: 34px;
+
+        height: 34px;
+    }
+
+    .game-header b {
+        font-size: 11px;
+    }
+}
+
+
+/* =========================================================
+📱 ULTRA SHORT / LANDSCAPE-LIKE VIEW
+========================================================= */
+
+@media (max-height: 600px) {
+
+    #app {
+        height: 100vh;
+
+        width: calc(100vh * 0.5625);
+
+        max-width: 100vw;
+    }
+
+    #gameScreen {
+        padding:
+            1px
+            2px
+            2px;
+    }
+
+    .game-header {
+        gap: 2px;
+
+        padding:
+            1px
+            2px
+            2px;
+    }
+
+    .game-stat {
+        height: 34px;
+
+        border-width: 2px;
+    }
+
+    .game-header small {
+        font-size: 7px;
+    }
+
+    .game-header b {
+        font-size: 10px;
+    }
+
+    .icon-btn {
+        width: 30px;
+        height: 30px;
+
+        border-width: 2px;
+
+        font-size: 12px;
+    }
+
+    .next {
+        height: 30px;
+
+        border-width: 2px;
+
+        margin-bottom: 2px;
+    }
+
+    .next::before {
+        font-size: 8px;
+    }
+
+    .next span {
+        font-size: 17px;
+    }
+
+    #gameScreen canvas {
+        border-width: 3px;
+
+        border-radius: 14px;
+    }
+
+    .game-actions {
+        margin-top: 2px;
+
+        gap: 3px;
+    }
+
+    .game-actions button {
+        height: 35px;
+
+        border-width: 2px;
+
+        border-radius: 12px;
+
+        font-size: 8px;
+    }
+}
+
+
+/* =========================================================
+HIDDEN HOME DATA
+========================================================= */
+
+.hidden-home-data {
+    display: none !important;
+}
+
+
+/* =========================================================
+🚫 FINAL SCROLLBAR SAFETY
+========================================================= */
+
+html,
+body,
+#app,
+.screen,
+.home-screen,
+#gameScreen,
+#missionsScreen,
+#dailyScreen,
+#settingsScreen,
+#resultsScreen {
+    overflow: hidden !important;
+
+    max-width: 100%;
+    max-height: 100%;
+}
+
+
+/* =========================================================
+🚫 GAME WIDTH SAFETY
+========================================================= */
+
+#gameScreen,
+#gameScreen *,
+#gameScreen canvas {
+    max-width: 100%;
+}
+
+
+/* =========================================================
+🎮 GAME FLEX SAFETY
+========================================================= */
+
+#gameScreen .game-header,
+#gameScreen .next,
+#gameScreen canvas,
+#gameScreen .game-actions {
+    flex-shrink: 1;
+}
+
+/* ======================================================
+   COMPACT HOME MENU
+====================================================== */
+
+.home-screen .new-menu-row {
+    margin-top: 8px !important;
+    margin-bottom: 8px !important;
+}
+/* =========================================================
+✨ FRUITY MERGE POP — VISUAL POLISH OVERRIDES
+========================================================= */
+html,
+body {
+    background:
+        linear-gradient(180deg, rgba(255,248,223,.10), rgba(54,102,71,.18)),
+        url("assets/images/tropical-home-bg.jpg") center / cover no-repeat;
+}
+
+#app { width: min(100vw, 540px, calc(100vh * 0.5625)); }
+
+.home-brand h1,
+.home-brand h1::before,
+.home-brand h1::after {
+    letter-spacing: 1.6px !important;
+    word-spacing: 3px;
+}
+.home-brand h1 {
+    font-family: "Luckiest Guy", cursive;
+}
+.home-brand h1::before,
+.home-brand h1::after {
+    text-shadow: 0 3px 0 rgba(255,255,255,.22), 0 6px 0 currentColor, 0 10px 0 rgba(91,35,16,.70), 0 14px 18px rgba(62,31,13,.24);
+}
+
+#gameScreen {
+    background:
+        linear-gradient(180deg, rgba(255,248,223,.18), rgba(64,105,64,.28)),
+        url("assets/images/tropical-home-bg.jpg") center / cover no-repeat;
+}
+.game-header { padding: 3px 5px 5px; gap: 4px; }
+.game-stat { height: clamp(40px, 6vh, 50px); }
+.next { height: clamp(36px, 5vh, 44px); margin-top: 0; margin-bottom: 4px; }
+#gameScreen canvas { border-width: 3px; border-radius: 18px; box-shadow: 0 5px 0 #a46c20, 0 10px 20px rgba(55,69,34,.18), inset 0 3px 0 rgba(255,255,255,.85); }
+
+@media (min-width: 600px) { #gameScreen { padding: 6px 8px 8px; } }
+@media (max-width: 599px) {
+    .home-brand h1::before,
+    .home-brand h1::after { letter-spacing: .9px !important; word-spacing: 2px; }
+    #gameScreen { padding: 3px 4px 5px; }
+    .game-header { gap: 3px; padding: 2px 2px 4px; }
+    .next { height: 37px; margin-bottom: 3px; }
+}
+@media (max-width: 360px) {
+    .home-brand h1::before { font-size: 43px; }
+    .home-brand h1::after { font-size: 37px; }
+    .home-brand h1::before,
+    .home-brand h1::after { letter-spacing: .55px !important; word-spacing: 1px; }
+}
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media (max-width: 350px) {
+
+    #shopScreen {
+        padding-left: 7px;
+        padding-right: 7px;
+    }
+
+    #shopList {
+        width: 96%;
+    }
+
+    .shop-item,
+    .shop-card,
+    .shop-product,
+    .shop-entry {
+        gap: 7px;
+
+        padding: 7px;
+    }
+
+    .shop-item > span:first-child,
+    .shop-card > span:first-child,
+    .shop-product > span:first-child,
+    .shop-entry > span:first-child {
+        width: 45px;
+        height: 45px;
+
+        flex-basis: 45px;
+
+        font-size: 26px;
+    }
+
+    .shop-item button,
+    .shop-card button,
+    .shop-product button,
+    .shop-entry button {
+        min-width: 56px;
+
+        font-size: 8px;
+    }
+}
+
+/* =========================================================
+🍓 HOW TO PLAY
+========================================================= */
+
+#howToPlayScreen {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow: hidden !important;
+}
+
+.how-to-play-content {
+    width: 100%;
+    max-width: 390px;
+
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 9px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    padding: 0 2px 12px;
+
+    scrollbar-width: none;
+}
+
+.how-to-play-content::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* =========================================================
+HOW TO PLAY CARD
+========================================================= */
+
+.how-card {
+    width: 100%;
+
+    min-height: 70px;
+
+    padding: 9px 11px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    text-align: left;
+
+    border-radius: 19px;
+
+    border: 3px solid #efd29a;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fffef4 0%,
+            #ffe7a7 100%
+        );
+
+    box-shadow:
+        0 5px 0 #b77b1c,
+        0 8px 14px rgba(72,48,21,.13),
+        inset 0 3px 0 #fff;
+}
+
+
+/* =========================================================
+HOW ICON
+========================================================= */
+
+.how-icon {
+    flex: 0 0 48px;
+
+    width: 48px;
+    height: 48px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fff8d9,
+            #ffd86c
+        );
+
+    border: 3px solid #e5b84d;
+
+    font-size: 27px;
+
+    box-shadow:
+        inset 0 3px 0 rgba(255,255,255,.85),
+        0 3px 0 rgba(157,98,25,.25);
+}
+
+
+/* =========================================================
+HOW TEXT
+========================================================= */
+
+.how-card strong {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #6a2d18;
+
+    font-size: 13px;
+
+    font-weight: 900;
+}
+
+.how-card p {
+    margin: 0;
+
+    color: #805638;
+
+    font-size: 10px;
+
+    line-height: 1.25;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+TIP
+========================================================= */
+
+.how-tip-box {
+    width: 100%;
+
+    margin-top: 2px;
+
+    padding: 10px 13px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 9px;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #a9d84c,
+            #78b82e
+        );
+
+    color: #173b12;
+
+    box-shadow:
+        0 5px 0 #4f7b20,
+        0 9px 15px rgba(58,77,25,.20),
+        inset 0 3px 0 rgba(255,255,255,.40);
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    text-align: left;
+}
+
+.how-tip-box span {
+    flex: 0 0 auto;
+
+    font-size: 28px;
+}
+
+.how-tip-box p {
+    margin: 0;
+
+    line-height: 1.3;
+}
+
+
+/* =========================================================
+📱 MOBILE
+========================================================= */
+
+@media (max-width: 599px) {
+
+    #howToPlayScreen {
+        padding:
+            14px
+            10px;
+    }
+
+    #howToPlayScreen .subscreen-header {
+        min-height: 51px;
+
+        margin-bottom: 9px;
+    }
+
+    #howToPlayScreen .subscreen-header h2 {
+        font-size: 22px;
+    }
+
+    #howToPlayScreen .back-button {
+        width: 42px;
+        height: 42px;
+
+        font-size: 19px;
+    }
+
+    .how-to-play-content {
+        gap: 8px;
+
+        padding-bottom: 8px;
+    }
+
+    .how-card {
+        min-height: 65px;
+
+        padding: 8px 9px;
+
+        gap: 9px;
+
+        border-radius: 17px;
+    }
+
+    .how-icon {
+        width: 43px;
+        height: 43px;
+
+        flex-basis: 43px;
+
+        font-size: 24px;
+    }
+
+    .how-card strong {
+        font-size: 11px;
+    }
+
+    .how-card p {
+        font-size: 9px;
+    }
+
+    .how-tip-box {
+        padding: 9px 10px;
+
+        font-size: 9px;
+
+        border-radius: 17px;
+    }
+
+    .how-tip-box span {
+        font-size: 24px;
+    }
+}
+
+
+/* =========================================================
+📱 VERY SMALL PHONES
+========================================================= */
+
+@media (max-width: 350px) {
+
+    .how-card {
+        min-height: 60px;
+
+        padding: 7px;
+    }
+
+    .how-icon {
+        width: 39px;
+        height: 39px;
+
+        flex-basis: 39px;
+
+        font-size: 21px;
+    }
+
+    .how-card strong {
+        font-size: 10px;
+    }
+
+    .how-card p {
+        font-size: 8px;
+    }
+
+    .how-tip-box {
+        font-size: 8px;
+    }
+}
+
+/* =========================================================
+🍉 FRUITY MERGE POP — 3D GAME SCREEN FRAME
+========================================================= */
+
+#gameScreen {
+    position: relative;
+
+    border-radius: 28px;
+
+    border: 5px solid #f6d58d;
+
+    background:
+        linear-gradient(
+            180deg,
+            #71d5cf 0%,
+            #9bdfbd 42%,
+            #d5e7a6 72%,
+            #82ad55 100%
+        );
+
+    box-shadow:
+        0 10px 0 #8b5b25,
+        0 16px 30px rgba(45, 42, 20, .30),
+        inset 0 4px 0 rgba(255,255,255,.75),
+        inset 0 -5px 0 rgba(78,72,30,.15);
+
+    overflow: hidden !important;
+}
+
+/* shiny upper edge */
+#gameScreen::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 8%;
+    right: 8%;
+
+    height: 7px;
+
+    border-radius: 0 0 20px 20px;
+
+    background: rgba(255,255,255,.45);
+
+    pointer-events: none;
+
+    z-index: 50;
+}
+
+/* subtle inner frame */
+#gameScreen::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 7px;
+
+    border-radius: 22px;
+
+    border: 2px solid rgba(255,255,255,.20);
+
+    pointer-events: none;
+
+    z-index: 49;
+}
+
+#gameScreen canvas {
+    border-radius: 22px;
+
+    border: 5px solid #e8bd65;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fffdf0,
+            #fff1c7
+        );
+
+    box-shadow:
+        0 7px 0 #9b671f,
+        0 12px 20px rgba(63,48,22,.25),
+        inset 0 4px 0 rgba(255,255,255,.9),
+        inset 0 -4px 0 rgba(181,130,42,.12);
+}
+
+/* =========================================================
+🌴 FULL TROPICAL HOME BACKGROUND — NO OUTER PANEL
+========================================================= */
+
+body {
+    background:
+        url("assets/images/tropical-home-bg.jpg")
+        center center / cover no-repeat !important;
+}
+
+#app {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.home-screen {
+    background:
+        url("assets/images/tropical-home-bg.jpg")
+        center center / cover no-repeat !important;
+
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+.home-screen::before,
+.home-screen::after {
+    display: none !important;
+    content: none !important;
+}
+
+/* =========================================================
+🌴 HOME SCREEN — REMOVE OUTER GLASS / CARD COMPLETELY
+========================================================= */
+
+/* Make the page itself use the tropical background */
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+
+    background:
+        url("assets/images/tropical-home-bg.jpg")
+        center center / cover no-repeat !important;
+}
+
+/* Remove ANY frame around the game app */
+#app {
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+/* HOME SCREEN = ONLY THE BACKGROUND */
+#homeScreen {
+    position: relative !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    background:
+        url("assets/images/tropical-home-bg.jpg")
+        center center / cover no-repeat !important;
+
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+
+    outline: none !important;
+}
+
+/* Kill pseudo-elements that may be creating the panel */
+#homeScreen::before,
+#homeScreen::after {
+    content: none !important;
+    display: none !important;
+
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Make sure children stay visible */
+#homeScreen > * {
+    position: relative;
+    z-index: 10;
+}
+
+/* =========================================================
+🌴 FRUITY MERGE POP — TRUE FULL-SCREEN HOME
+========================================================= */
+
+#homeScreen {
+    position: fixed !important;
+    inset: 0 !important;
+
+    width: 100vw !important;
+    height: 100vh !important;
+
+    max-width: none !important;
+    max-height: none !important;
+
+    margin: 0 !important;
+    padding: 55px 18px 20px !important;
+
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+
+    background:
+        url("assets/images/tropical-home-bg.jpg")
+        center center / cover no-repeat !important;
+
+    overflow: hidden !important;
+}
+
+/* absolutely NO panel/overlay */
+#homeScreen::before,
+#homeScreen::after {
+    content: none !important;
+    display: none !important;
+}
+
+/* Keep everything on top of the background */
+#homeScreen > * {
+    position: relative;
+    z-index: 10;
+}
+
+/* Keep the top bar above everything */
+#homeScreen .home-topbar {
+    z-index: 100;
+}
+
+/* =========================================================
+🎯 FRUITY MERGE POP — MISSIONS
+Same Tropical Style as SHOP
+========================================================= */
+
+#missionsScreen {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    padding: 18px 14px 20px;
+
+    overflow: hidden !important;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,248,223,.10),
+            rgba(54,102,71,.18)
+        ),
+        url("assets/images/tropical-home-bg.jpg")
+        center / cover no-repeat !important;
+}
+
+/* Tropical decoration */
+
+#missionsScreen::before {
+    content: "🍍  🎯  🍓";
+
+    position: absolute;
+
+    top: 48px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 100%;
+
+    text-align: center;
+
+    font-size: 27px;
+
+    letter-spacing: 5px;
+
+    opacity: .90;
+
+    pointer-events: none;
+
+    filter:
+        drop-shadow(0 4px 3px rgba(60,35,15,.22));
+}
+
+/* Header */
+
+#missionsScreen .subscreen-header {
+    position: relative;
+
+    z-index: 5;
+
+    min-height: 55px;
+
+    margin-bottom: 18px;
+}
+
+/* Title */
+
+#missionsScreen .subscreen-header h2 {
+    color: #ffd33a;
+
+    font-size: 29px;
+
+    font-weight: 900;
+
+    text-transform: uppercase;
+
+    -webkit-text-stroke: 3px #703019;
+
+    text-shadow:
+        0 4px 0 #e28a19,
+        0 6px 0 #703019,
+        0 9px 13px rgba(74,38,18,.28);
+}
+
+/* Back button */
+
+#missionsScreen .back-button {
+    z-index: 10;
+
+    left: 0;
+
+    width: 45px;
+    height: 45px;
+
+    border-radius: 50%;
+
+    border: 3px solid #efd29a;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fffef4,
+            #ffe5a4
+        );
+
+    color: var(--brown);
+
+    font-size: 21px;
+
+    box-shadow:
+        0 5px 0 #b77a1c,
+        0 8px 15px rgba(72,48,21,.15),
+        inset 0 3px 0 #fff;
+}
+
+/* Mission list */
+
+#missionsScreen #missionList {
+    position: relative;
+
+    z-index: 4;
+
+    width: 100%;
+
+    max-width: 380px;
+
+    margin: 0 auto;
+
+    padding: 3px 2px 15px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+    overflow-y: auto;
+
+    scrollbar-width: none;
+}
+
+#missionsScreen #missionList::-webkit-scrollbar {
+    display: none;
+}
+
+/* Mission cards */
+
+#missionsScreen .mission {
+    position: relative;
+
+    width: 100%;
+
+    min-height: 82px;
+
+    padding: 12px 13px;
+
+    border-radius: 23px;
+
+    border: 3px solid #efd29a;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fffef5 0%,
+            #ffe5a4 100%
+        );
+
+    text-align: left;
+
+    box-shadow:
+        0 5px 0 #b77b1c,
+        0 9px 17px rgba(72,48,21,.17),
+        inset 0 3px 0 #fff;
+}
+
+/* Mission title */
+
+#missionsScreen .mission-top {
+    color: #743217;
+
+    font-size: 14px;
+
+    font-weight: 900;
+}
+
+/* Progress bar */
+
+#missionsScreen .bar {
+    height: 11px;
+
+    margin: 9px 0 6px;
+
+    overflow: hidden;
+
+    background: #ead49e;
+
+    border: 2px solid #d1b46d;
+
+    border-radius: 20px;
+}
+
+#missionsScreen .bar > i {
+    display: block;
+
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff5868,
+            #ffb62d,
+            #83bd35
+        );
+
+    border-radius: inherit;
+
+    box-shadow:
+        inset 0 2px 0 rgba(255,255,255,.35);
+}
+
+/* Mission description */
+
+#missionsScreen .mission small {
+    color: #986947;
+
+    font-size: 10px;
+
+    font-weight: 800;
+}
+
+/* Claim button */
+
+#missionsScreen .mission button {
+    float: right;
+
+    margin-top: -22px;
+
+    padding: 6px 12px;
+
+    border-radius: 13px;
+
+    border: 2px solid #ffc0a0;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ff6872,
+            #e62c41
+        );
+
+    color: white;
+
+    font-size: 10px;
+
+    font-weight: 900;
+
+    box-shadow:
+        0 3px 0 #a82532;
+}
+
+/* =========================================================
+🎁 FRUITY MERGE POP — DAILY REWARD
+========================================================= */
+
+#dailyScreen {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    padding: 18px 14px 20px;
+
+    overflow: hidden !important;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,248,223,.10),
+            rgba(54,102,71,.18)
+        ),
+        url("assets/images/tropical-home-bg.jpg")
+        center / cover no-repeat !important;
+}
+
+/* Tropical decoration */
+
+#dailyScreen::before {
+    content: "🎁  🍓  🍊";
+
+    position: absolute;
+
+    top: 48px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 100%;
+
+    text-align: center;
+
+    font-size: 27px;
+
+    letter-spacing: 5px;
+
+    opacity: .90;
+
+    pointer-events: none;
+
+    filter:
+        drop-shadow(0 4px 3px rgba(60,35,15,.22));
+}
+
+/* Header */
+
+#dailyScreen .subscreen-header {
+    position: relative;
+
+    z-index: 5;
+
+    min-height: 55px;
+
+    margin-bottom: 18px;
+}
+
+/* Title */
+
+#dailyScreen .subscreen-header h2 {
+    color: #ffd33a;
+
+    font-size: 29px;
+
+    font-weight: 900;
+
+    text-transform: uppercase;
+
+    -webkit-text-stroke: 3px #703019;
+
+    text-shadow:
+        0 4px 0 #e28a19,
+        0 6px 0 #703019,
+        0 9px 13px rgba(74,38,18,.28);
+}
+
+/* Back button */
+
+#dailyScreen .back-button {
+    z-index: 10;
+
+    left: 0;
+
+    width: 45px;
+    height: 45px;
+
+    border-radius: 50%;
+
+    border: 3px solid #efd29a;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fffef4,
+            #ffe5a4
+        );
+
+    color: var(--brown);
+
+    font-size: 21px;
+
+    box-shadow:
+        0 5px 0 #b77a1c,
+        0 8px 15px rgba(72,48,21,.15),
+        inset 0 3px 0 #fff;
+}
+
+/* Daily card */
+
+#dailyScreen .daily-card {
+    position: relative;
+
+    z-index: 4;
+
+    width: 100%;
+
+    max-width: 380px;
+
+    margin: 20px auto;
+
+    padding: 25px 18px;
+
+    border-radius: 26px;
+
+    border: 4px solid #efd19a;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fffef4,
+            #ffe5a4
+        );
+
+    box-shadow:
+        0 7px 0 #b77a1c,
+        0 14px 24px rgba(72,48,21,.15),
+        inset 0 3px 0 #fff;
+
+    text-align: center;
+}
+
+/* Streak */
+
+#dailyScreen .streak {
+    color: #d63b43;
+
+    font-size: 21px;
+
+    font-weight: 900;
+}
+
+/* Reward */
+
+#dailyScreen .reward {
+    margin: 20px 0;
+
+    font-size: 50px;
+
+    font-weight: 900;
+
+    color: #c9851d;
+
+    filter:
+        drop-shadow(0 4px 2px rgba(104,65,19,.16));
+}
+
+/* Claim button */
+
+#dailyScreen .daily-card .primary {
+    min-width: 180px;
+
+    min-height: 52px;
+
+    padding: 11px 20px;
+
+    border-radius: 28px;
+
+    border: 3px solid #ffc0a0;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ff6570,
+            #e62b40
+        );
+
+    color: white;
+
+    box-shadow:
+        0 5px 0 #a82431,
+        0 9px 16px rgba(72,48,21,.18),
+        inset 0 3px 0 rgba(255,255,255,.45);
+
+    font-size: 17px;
+}
+
+@media (max-width: 599px) {
+
+    #missionsScreen,
+    #dailyScreen {
+        padding:
+            15px
+            10px
+            16px;
+    }
+
+    #missionsScreen .subscreen-header,
+    #dailyScreen .subscreen-header {
+        min-height: 52px;
+        margin-bottom: 13px;
+    }
+
+    #missionsScreen .subscreen-header h2,
+    #dailyScreen .subscreen-header h2 {
+        font-size: 24px;
+        -webkit-text-stroke-width: 2.5px;
+    }
+
+    #missionsScreen .back-button,
+    #dailyScreen .back-button {
+        width: 42px;
+        height: 42px;
+        font-size: 19px;
+    }
+
+    #missionsScreen::before,
+    #dailyScreen::before {
+        top: 43px;
+        font-size: 22px;
+        letter-spacing: 3px;
+    }
+
+    #missionsScreen #missionList {
+        width: 94%;
+        gap: 10px;
+    }
+
+    #missionsScreen .mission {
+        min-height: 74px;
+        padding: 9px 10px;
+        border-radius: 19px;
+    }
+
+    #missionsScreen .mission-top {
+        font-size: 12px;
+    }
+
+    #missionsScreen .mission small {
+        font-size: 9px;
+    }
+
+    #dailyScreen .daily-card {
+        width: 94%;
+        margin-top: 15px;
+        padding: 22px 14px;
+    }
+
+    #dailyScreen .reward {
+        font-size: 44px;
+    }
+}
+
+/* =========================================================
+🍓 REMOVE FRUIT DECORATION FROM OTHER SUBSCREENS
+========================================================= */
+
+#missionsScreen::before,
+#dailyScreen::before,
+#settingsScreen::before,
+#resultsScreen::before {
+    content: none !important;
+    display: none !important;
+}
+
+/* Keep fruits ONLY on SHOP */
+#shopScreen::before {
+    content: "🍍  🍓  🍊";
+
+    position: absolute;
+    top: 48px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 100%;
+
+    text-align: center;
+
+    font-size: 27px;
+
+    letter-spacing: 5px;
+
+    opacity: .90;
+
+    pointer-events: none;
+
+    filter:
+        drop-shadow(0 4px 3px rgba(60, 35, 15, .22));
+
+    z-index: 1;
+}
+
+/* =========================================================
+🍉 FRUITY MERGE POP — GAME OVER / RESULTS REDESIGN
+========================================================= */
+
+#resultsScreen {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px 15px;
+
+    overflow: hidden !important;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,248,223,.10),
+            rgba(54,102,71,.18)
+        ),
+        url("assets/images/tropical-home-bg.jpg")
+        center / cover no-repeat;
+
+    border-radius: 0;
+
+    box-shadow: none;
+}
+
+/* REMOVE RANDOM FRUIT DECORATION */
+#resultsScreen::before {
+    content: none !important;
+    display: none !important;
+}
+
+/* =========================================================
+GAME OVER CARD
+========================================================= */
+
+#resultsScreen > * {
+    position: relative;
+    z-index: 2;
+}
+
+#resultsScreen .result-card {
+    width: min(370px, 92%);
+
+    padding: 25px 20px 22px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    border-radius: 28px;
+
+    border: 4px solid #efd19a;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fffef5 0%,
+            #ffe5a4 100%
+        );
+
+    box-shadow:
+        0 8px 0 #b77a1c,
+        0 14px 25px rgba(72,48,21,.20),
+        inset 0 4px 0 #fff;
+
+    text-align: center;
+}
+
+/* =========================================================
+RESULT ICON
+========================================================= */
+
+#resultsScreen .result-icon {
+    width: 82px;
+    height: 82px;
+
+    display: grid;
+    place-items: center;
+
+    margin-bottom: 5px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fff8d9,
+            #ffd86c
+        );
+
+    border: 4px solid #e5b84d;
+
+    font-size: 48px;
+
+    filter: none;
+
+    box-shadow:
+        inset 0 4px 0 rgba(255,255,255,.85),
+        0 5px 0 rgba(157,98,25,.25),
+        0 8px 14px rgba(72,48,21,.14);
+
+    animation: pop .5s ease;
+}
+
+/* =========================================================
+GAME OVER TITLE
+========================================================= */
+
+#resultsScreen h2 {
+    margin: 5px 0 8px;
+
+    color: #ffd33a;
+
+    font-size: clamp(27px, 7vw, 34px);
+
+    font-weight: 900;
+
+    text-transform: uppercase;
+
+    -webkit-text-stroke: 3px #703019;
+
+    text-shadow:
+        0 4px 0 #e28a19,
+        0 6px 0 #703019,
+        0 9px 13px rgba(74,38,18,.25);
+}
+
+/* =========================================================
+SCORE LABEL / SCORE
+========================================================= */
+
+#resultsScreen .big-score {
+    width: 100%;
+
+    margin: 5px 0 10px;
+
+    padding: 10px;
+
+    border-radius: 18px;
+
+    background: rgba(255,255,255,.42);
+
+    border: 2px solid #efd19a;
+
+    color: #df3d43;
+
+    font-size: 34px;
+
+    font-weight: 900;
+
+    text-shadow:
+        0 3px 0 rgba(255,255,255,.65);
+}
+
+/* =========================================================
+NEW BEST
+========================================================= */
+
+#resultsScreen .new-best {
+    margin: 0 0 8px;
+
+    color: #f38d1e;
+
+    font-size: 15px;
+
+    font-weight: 900;
+
+    animation: pop .5s ease;
+}
+
+/* =========================================================
+RESULT BUTTONS
+========================================================= */
+
+#resultsScreen > button {
+    width: min(270px, 88%);
+
+    min-height: 52px;
+
+    margin: 7px auto;
+
+    padding: 10px 17px;
+
+    border-radius: 27px;
+
+    border: 3px solid #efd29a;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fffef3,
+            #ffe7ab
+        );
+
+    color: var(--brown);
+
+    font-size: 15px;
+
+    font-weight: 900;
+
+    box-shadow:
+        0 5px 0 #b77b1c,
+        0 8px 15px rgba(72,48,21,.14),
+        inset 0 3px 0 #fff;
+}
+
+/* PLAY AGAIN */
+
+#resultsScreen > .primary {
+    background:
+        linear-gradient(
+            180deg,
+            #ff6570,
+            #e62b40
+        );
+
+    border-color: #ffc0a0;
+
+    color: white;
+
+    box-shadow:
+        0 5px 0 #a82431,
+        0 9px 16px rgba(72,48,21,.18),
+        inset 0 3px 0 rgba(255,255,255,.45);
+}
+
+/* HOVER */
+
+#resultsScreen > button:hover {
+    transform: translateY(-2px);
+
+    filter: brightness(1.04);
+}
+
+/* ACTIVE */
+
+#resultsScreen > button:active {
+    transform: translateY(4px);
+
+    box-shadow:
+        0 2px 0 #b77b1c,
+        inset 0 2px 0 #fff;
+}
+
+/* =========================================================
+📱 MOBILE GAME OVER
+========================================================= */
+
+@media (max-width: 599px) {
+
+    #resultsScreen {
+        padding: 15px 10px;
+    }
+
+    #resultsScreen .result-card {
+        width: 92%;
+
+        padding: 20px 15px 18px;
+
+        border-radius: 24px;
+    }
+
+    #resultsScreen .result-icon {
+        width: 70px;
+        height: 70px;
+
+        font-size: 40px;
+
+        border-width: 3px;
+    }
+
+    #resultsScreen h2 {
+        font-size: 25px;
+
+        -webkit-text-stroke-width: 2.5px;
+    }
+
+    #resultsScreen .big-score {
+        font-size: 29px;
+
+        padding: 8px;
+    }
+
+    #resultsScreen > button {
+        width: 90%;
+
+        min-height: 48px;
+
+        font-size: 13px;
+    }
+}
+
+/* =========================================================
+⚙️ FRUITY MERGE POP — SETTINGS SCREEN
+MATCH ACHIEVEMENTS BACKGROUND
+========================================================= */
+
+#settingsScreen {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    padding: 18px 14px 20px;
+
+    overflow: hidden !important;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,248,223,.10),
+            rgba(54,102,71,.18)
+        ),
+        url("assets/images/tropical-home-bg.jpg")
+        center / cover no-repeat;
+}
+
+
+/* =========================================================
+REMOVE ANY SOLID / RANDOM OVERLAY
+========================================================= */
+
+#settingsScreen::before {
+    content: none !important;
+    display: none !important;
+}
+
+
+/* =========================================================
+SETTINGS CONTENT ABOVE BACKGROUND
+========================================================= */
+
+#settingsScreen > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* =========================================================
+🏆 FRUITY MERGE POP — ACHIEVEMENTS DESIGN
+========================================================= */
+
+#achievementsScreen {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    padding: 18px 14px 20px;
+
+    overflow: hidden !important;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,248,223,.10),
+            rgba(54,102,71,.18)
+        ),
+        url("assets/images/tropical-home-bg.jpg")
+        center / cover no-repeat;
+}
+
+/* REMOVE RANDOM FRUITS BEHIND TITLE */
+
+#achievementsScreen::before {
+    content: none !important;
+    display: none !important;
+}
+
+/* =========================================================
+HEADER
+========================================================= */
+
+#achievementsScreen .subscreen-header {
+    position: relative;
+
+    z-index: 5;
+
+    min-height: 55px;
+
+    margin-bottom: 10px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+#achievementsScreen .subscreen-header h2 {
+    margin: 0;
+
+    color: #ffd33a;
+
+    font-size: 28px;
+
+    font-weight: 900;
+
+    text-transform: uppercase;
+
+    -webkit-text-stroke: 3px #703019;
+
+    text-shadow:
+        0 4px 0 #e28a19,
+        0 6px 0 #703019,
+        0 9px 13px rgba(74,38,18,.28);
+}
+
+/* =========================================================
+ACHIEVEMENT LIST
+========================================================= */
+
+#achievementList {
+    position: relative;
+
+    z-index: 4;
+
+    width: 100%;
+
+    max-width: 390px;
+
+    height: calc(100% - 70px);
+
+    margin: 0 auto;
+
+    padding: 3px 2px 15px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 11px;
+
+    overflow-y: auto;
+
+    overflow-x: hidden;
+
+    scrollbar-width: none;
+}
+
+#achievementList::-webkit-scrollbar {
+    display: none;
+}
+
+/* =========================================================
+ACHIEVEMENT CARD
+========================================================= */
+
+.achievement,
+.achievement-card,
+.achievement-item {
+    position: relative;
+
+    width: 100%;
+
+    min-height: 82px;
+
+    padding: 10px 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    border-radius: 22px;
+
+    border: 3px solid #efd29a;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fffef5 0%,
+            #ffe5a4 100%
+        );
+
+    color: var(--brown);
+
+    text-align: left;
+
+    box-shadow:
+        0 5px 0 #b77b1c,
+        0 9px 17px rgba(72,48,21,.17),
+        inset 0 3px 0 #fff;
+
+    transition:
+        transform .15s ease,
+        filter .15s ease;
+}
+
+/* =========================================================
+ACHIEVEMENT ICON
+========================================================= */
+
+.achievement > span:first-child,
+.achievement-card > span:first-child,
+.achievement-item > span:first-child {
+    width: 58px;
+
+    height: 58px;
+
+    flex: 0 0 58px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 18px;
+
+    background:
+        radial-gradient(
+            circle at 35% 25%,
+            rgba(255,255,255,.90),
+            transparent 28%
+        ),
+        linear-gradient(
+            145deg,
+            #fff5bd,
+            #f4c85b
+        );
+
+    border: 3px solid #e3b54d;
+
+    font-size: 34px;
+
+    box-shadow:
+        inset 0 3px 0 rgba(255,255,255,.85),
+        0 4px 0 rgba(169,106,22,.25),
+        0 6px 10px rgba(72,48,21,.14);
+}
+
+/* =========================================================
+ACHIEVEMENT CONTENT
+========================================================= */
+
+.achievement > div,
+.achievement-card > div,
+.achievement-item > div {
+    flex: 1;
+
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+.achievement strong,
+.achievement-card strong,
+.achievement-item strong {
+    color: #743217;
+
+    font-size: 14px;
+
+    font-weight: 900;
+
+    text-transform: uppercase;
+}
+
+.achievement small,
+.achievement-card small,
+.achievement-item small {
+    color: #986947;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    line-height: 1.2;
+}
+
+/* =========================================================
+PROGRESS
+========================================================= */
+
+.achievement .progress,
+.achievement-card .progress,
+.achievement-item .progress {
+    width: 100%;
+
+    height: 9px;
+
+    margin-top: 4px;
+
+    overflow: hidden;
+
+    border-radius: 20px;
+
+    background: #ead49e;
+
+    border: 2px solid #d1b46d;
+}
+
+.achievement .progress > i,
+.achievement-card .progress > i,
+.achievement-item .progress > i {
+    display: block;
+
+    height: 100%;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff5868,
+            #ffb62d,
+            #83bd35
+        );
+
+    box-shadow:
+        inset 0 2px 0 rgba(255,255,255,.35);
+}
+
+/* =========================================================
+LOCKED ACHIEVEMENTS
+========================================================= */
+
+.achievement.locked,
+.achievement-card.locked,
+.achievement-item.locked {
+    filter: grayscale(.35);
+
+    opacity: .72;
+}
+
+.achievement.locked > span:first-child,
+.achievement-card.locked > span:first-child,
+.achievement-item.locked > span:first-child {
+    background:
+        linear-gradient(
+            145deg,
+            #eeeeee,
+            #cfcfcf
+        );
+
+    border-color: #b9b9b9;
+
+    filter: grayscale(1);
+
+    font-size: 28px;
+}
+
+/* =========================================================
+COMPLETED ACHIEVEMENT
+========================================================= */
+
+.achievement.completed,
+.achievement-card.completed,
+.achievement-item.completed {
+    border-color: #dcb13f;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fffef2,
+            #ffe08a
+        );
+}
+
+.achievement.completed::after,
+.achievement-card.completed::after,
+.achievement-item.completed::after {
+    content: "✓";
+
+    position: absolute;
+
+    top: 7px;
+
+    right: 8px;
+
+    width: 23px;
+
+    height: 23px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: #78b82e;
+
+    border: 2px solid #e5f2b9;
+
+    color: white;
+
+    font-size: 13px;
+
+    font-weight: 900;
+
+    box-shadow:
+        0 3px 0 #4f7b20;
+}
+
+/* =========================================================
+HOVER
+========================================================= */
+
+.achievement:hover,
+.achievement-card:hover,
+.achievement-item:hover {
+    transform: translateY(-2px);
+
+    filter: brightness(1.03);
+}
+
+/* =========================================================
+MOBILE
+========================================================= */
+
+@media (max-width: 599px) {
+
+    #achievementsScreen {
+        padding:
+            15px
+            10px
+            16px;
+    }
+
+    #achievementsScreen .subscreen-header {
+        min-height: 51px;
+
+        margin-bottom: 9px;
+    }
+
+    #achievementsScreen .subscreen-header h2 {
+        font-size: 23px;
+
+        -webkit-text-stroke-width: 2.5px;
+    }
+
+    #achievementList {
+        width: 94%;
+
+        gap: 9px;
+
+        height: calc(100% - 65px);
+    }
+
+    .achievement,
+    .achievement-card,
+    .achievement-item {
+        min-height: 74px;
+
+        padding: 8px 9px;
+
+        gap: 9px;
+
+        border-radius: 19px;
+    }
+
+    .achievement > span:first-child,
+    .achievement-card > span:first-child,
+    .achievement-item > span:first-child {
+        width: 50px;
+
+        height: 50px;
+
+        flex-basis: 50px;
+
+        border-radius: 15px;
+
+        font-size: 29px;
+    }
+
+    .achievement strong,
+    .achievement-card strong,
+    .achievement-item strong {
+        font-size: 11px;
+    }
+
+    .achievement small,
+    .achievement-card small,
+    .achievement-item small {
+        font-size: 9px;
+    }
+}
+
+/* =========================================================
+SMALL PHONES
+========================================================= */
+
+@media (max-width: 350px) {
+
+    #achievementList {
+        width: 96%;
+    }
+
+    .achievement,
+    .achievement-card,
+    .achievement-item {
+        gap: 7px;
+
+        padding: 7px;
+    }
+
+    .achievement > span:first-child,
+    .achievement-card > span:first-child,
+    .achievement-item > span:first-child {
+        width: 45px;
+
+        height: 45px;
+
+        flex-basis: 45px;
+
+        font-size: 25px;
+    }
+
+    .achievement strong,
+    .achievement-card strong,
+    .achievement-item strong {
+        font-size: 10px;
+    }
+
+    .achievement small,
+    .achievement-card small,
+    .achievement-item small {
+        font-size: 8px;
+    }
+}
+
+/* =========================================================
+🎨 FRUITY MERGE POP — THEMES DESIGN
+========================================================= */
+
+#themesScreen {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    padding: 18px 14px 20px;
+
+    overflow: hidden !important;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,248,223,.10),
+            rgba(54,102,71,.18)
+        ),
+        url("assets/images/tropical-home-bg.jpg")
+        center / cover no-repeat;
+}
+
+/* REMOVE RANDOM FRUITS BEHIND TITLE */
+#themesScreen::before {
+    content: none !important;
+    display: none !important;
+}
+
+
+/* =========================================================
+HEADER
+========================================================= */
+
+#themesScreen .subscreen-header {
+    position: relative;
+
+    z-index: 5;
+
+    min-height: 55px;
+
+    margin-bottom: 10px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+#themesScreen .subscreen-header h2 {
+    margin: 0;
+
+    color: #ffd33a;
+
+    font-size: 28px;
+
+    font-weight: 900;
+
+    text-transform: uppercase;
+
+    -webkit-text-stroke: 3px #703019;
+
+    text-shadow:
+        0 4px 0 #e28a19,
+        0 6px 0 #703019,
+        0 9px 13px rgba(74,38,18,.28);
+}
+
+
+/* =========================================================
+🎨 FRUITY MERGE POP — THEMES
+========================================================= */
+
+#themeList {
+    position: relative;
+
+    z-index: 4;
+
+    width: 100%;
+    max-width: 390px;
+
+    height: calc(100% - 70px);
+
+    margin: 0 auto;
+
+    padding: 3px 3px 15px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 11px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    scrollbar-width: none;
+}
+
+#themeList::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* =========================================================
+THEME CARD
+========================================================= */
+
+#themeList > div,
+.theme-card,
+.theme-item {
+    position: relative;
+
+    width: 100%;
+
+    min-height: 91px;
+
+    padding: 10px 11px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    border-radius: 21px;
+
+    border: 3px solid #efd29a;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fffef5 0%,
+            #ffe5a4 100%
+        );
+
+    color: var(--brown);
+
+    box-shadow:
+        0 5px 0 #b77b1c,
+        0 8px 15px rgba(72,48,21,.16),
+        inset 0 3px 0 #fff;
+
+    transition:
+        transform .15s ease,
+        filter .15s ease;
+}
+
+
+/* =========================================================
+THEME PREVIEW
+========================================================= */
+
+#themeList img {
+    width: 72px;
+
+    height: 64px;
+
+    flex: 0 0 72px;
+
+    object-fit: cover;
+
+    border-radius: 16px;
+
+    border: 3px solid #e3b54d;
+
+    background: #fff8d8;
+
+    box-shadow:
+        inset 0 3px 0 rgba(255,255,255,.9),
+        0 4px 0 rgba(169,106,22,.25),
+        0 5px 9px rgba(72,48,21,.13);
+}
+
+
+/* =========================================================
+THEME CONTENT
+========================================================= */
+
+#themeList > div > div,
+.theme-card > div,
+.theme-item > div {
+    flex: 1;
+
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+
+/* TITLE */
+
+#themeList strong,
+.theme-card strong,
+.theme-item strong {
+    color: #743217;
+
+    font-size: 14px;
+
+    font-weight: 900;
+
+    text-transform: uppercase;
+
+    line-height: 1.05;
+}
+
+
+/* DESCRIPTION */
+
+#themeList small,
+.theme-card small,
+.theme-item small {
+    color: #986947;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    line-height: 1.15;
+}
+
+
+/* =========================================================
+THEME BUTTON
+========================================================= */
+
+#themeList button,
+.theme-card button,
+.theme-item button {
+    flex: 0 0 auto;
+
+    min-width: 70px;
+
+    padding: 7px 9px;
+
+    border-radius: 13px;
+
+    border: 3px solid #d47d19;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffcf4a,
+            #f19b24
+        );
+
+    color: white;
+
+    font-size: 10px;
+
+    font-weight: 900;
+
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 4px 0 #9b5815,
+        inset 0 2px 0 rgba(255,255,255,.45);
+
+    text-shadow:
+        0 2px 0 rgba(110,55,15,.45);
+
+    transition:
+        transform .12s ease,
+        filter .12s ease;
+}
+
+
+/* =========================================================
+BUTTON PRESS
+========================================================= */
+
+#themeList button:active,
+.theme-card button:active,
+.theme-item button:active {
+    transform: translateY(3px);
+
+    box-shadow:
+        0 1px 0 #9b5815,
+        inset 0 2px 0 rgba(255,255,255,.35);
+}
+
+
+/* =========================================================
+SELECTED THEME
+========================================================= */
+
+#themeList .selected,
+#themeList .active,
+.theme-card.selected,
+.theme-card.active,
+.theme-item.selected,
+.theme-item.active {
+    border-color: #78ad32;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fffef4,
+            #e8f3ae
+        );
+
+    box-shadow:
+        0 5px 0 #5f8b25,
+        0 8px 15px rgba(72,48,21,.16),
+        inset 0 3px 0 #fff;
+}
+
+
+/* =========================================================
+SELECTED CHECK
+========================================================= */
+
+#themeList .selected::after,
+#themeList .active::after,
+.theme-card.selected::after,
+.theme-card.active::after,
+.theme-item.selected::after,
+.theme-item.active::after {
+    content: "✓";
+
+    position: absolute;
+
+    top: 6px;
+
+    right: 7px;
+
+    width: 22px;
+
+    height: 22px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: #78b82e;
+
+    border: 2px solid #e5f2b9;
+
+    color: white;
+
+    font-size: 13px;
+
+    font-weight: 900;
+
+    box-shadow:
+        0 3px 0 #4f7b20;
+}
+
+
+/* =========================================================
+LOCKED THEME
+========================================================= */
+
+#themeList .locked,
+.theme-card.locked,
+.theme-item.locked {
+    filter: grayscale(.35);
+
+    opacity: .72;
+}
+
+#themeList .locked img,
+.theme-card.locked img,
+.theme-item.locked img {
+    filter: grayscale(.8);
+}
+
+
+/* =========================================================
+HOVER
+========================================================= */
+
+#themeList > div:hover,
+.theme-card:hover,
+.theme-item:hover {
+    transform: translateY(-2px);
+
+    filter: brightness(1.03);
+}
+
+
+/* =========================================================
+ANDROID PHONE SIZE
+========================================================= */
+
+@media (max-width: 430px) {
+
+    #themeList {
+        gap: 10px;
+
+        padding-left: 2px;
+        padding-right: 2px;
+    }
+
+    #themeList > div,
+    .theme-card,
+    .theme-item {
+        min-height: 86px;
+
+        padding: 9px;
+
+        gap: 9px;
+
+        border-radius: 19px;
+    }
+
+    #themeList img {
+        width: 65px;
+
+        height: 58px;
+
+        flex-basis: 65px;
+    }
+
+    #themeList strong,
+    .theme-card strong, 
+    .theme-item strong {
+        font-size: 12px;
+    }
+
+    #themeList small,
+    .theme-card small,
+    .theme-item small {
+        font-size: 8px;
+    }
+
+    #themeList button,
+    .theme-card button,
+    .theme-item button {
+        min-width: 62px;
+
+        padding: 6px 7px;
+
+        font-size: 9px;
+    }
+}
+
+/* =========================================================
+MOBILE / ANDROID
+========================================================= */
+
+@media (max-width: 430px) {
+
+    #themesScreen {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    #themesScreen .subscreen-header h2 {
+        font-size: 25px;
+
+        -webkit-text-stroke: 2.5px #703019;
+    }
+
+    #themeList > div,
+    .theme-card,
+    .theme-item {
+        min-height: 96px;
+
+        padding: 10px;
+
+        gap: 10px;
+
+        border-radius: 19px;
+    }
+
+    #themeList img {
+        width: 70px;
+
+        height: 62px;
+
+        flex-basis: 70px;
+    }
+
+    #themeList strong,
+    .theme-card strong,
+    .theme-item strong {
+        font-size: 13px;
+    }
+
+    #themeList button,
+    .theme-card button,
+    .theme-item button {
+        min-width: 68px;
+
+        padding: 7px 9px;
+
+        font-size: 10px;
+    }
+}
+
+/* =========================================================
+   FRUITY MERGE POP IMAGE LOGO
+========================================================= */
+
+.home-brand {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.game-logo {
+    display: block;
+
+    width: min(82vw, 430px);
+    height: auto;
+
+    object-fit: contain;
+
+    margin: 0 auto;
+}
+
+/* =========================================================
+   🍒 FRUIT MERGE SEQUENCE
+   ========================================================= */
+
+.fruit-sequence {
+    width: 100%;
+    margin: 14px auto 18px;
+    padding: 14px 12px;
+    box-sizing: border-box;
+
+    text-align: center;
+
+    /* SAME CARD FEEL */
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.45);
+
+    background: rgba(255, 255, 255, 0.16);
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.10),
+        inset 0 1px 0 rgba(255, 255, 255, 0.35);
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.fruit-sequence-title {
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+
+.fruit-sequence-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+
+    gap: 6px 7px;
+
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+.fruit-sequence-list span {
+    white-space: nowrap;
+}
+
+.fruit-sequence-list span:nth-child(even) {
+    opacity: 0.65;
+}
+
+
+/* =========================================================
+   📱 SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .fruit-sequence {
+        margin-top: 10px;
+        margin-bottom: 14px;
+        padding: 10px 7px;
+        border-radius: 15px;
+    }
+
+    .fruit-sequence-title {
+        font-size: 13px;
+        margin-bottom: 7px;
+    }
+
+    .fruit-sequence-list {
+        gap: 4px 5px;
+        font-size: 10px;
+        line-height: 1.25;
+    }
+}
+
+
+/* =========================================================
+   📱 NORMAL PHONES
+   ========================================================= */
+
+@media (min-width: 381px) and (max-width: 600px) {
+
+    .fruit-sequence {
+        margin-top: 12px;
+        margin-bottom: 16px;
+        padding: 11px 8px;
+        border-radius: 16px;
+    }
+
+    .fruit-sequence-title {
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+
+    .fruit-sequence-list {
+        gap: 5px 6px;
+        font-size: 11px;
+        line-height: 1.3;
+    }
+}
+
+
+/* =========================================================
+   📱 TABLETS
+   ========================================================= */
+
+@media (min-width: 601px) and (max-width: 1024px) {
+
+    .fruit-sequence {
+        margin-top: 16px;
+        margin-bottom: 20px;
+        padding: 15px 16px;
+        border-radius: 20px;
+    }
+
+    .fruit-sequence-title {
+        font-size: 17px;
+        margin-bottom: 10px;
+    }
+
+    .fruit-sequence-list {
+        gap: 7px 9px;
+        font-size: 13px;
+        line-height: 1.4;
+    }
+}
+
+/* =========================================================
+   🌴 SUBSCREEN TITLE
+   Missions • Daily • Achievements • Themes • How To Play
+   ========================================================= */
+
+.subscreen-header {
+    position: relative;
+
+    width: 100%;
+
+    min-height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
+
+    padding: 10px 58px;
+
+    margin-bottom: 12px;
+
+    border-radius: 16px;
+
+    background: rgba(255, 255, 255, 0.18);
+
+    border: 1px solid rgba(255, 255, 255, 0.45);
+
+    box-shadow:
+        0 6px 16px rgba(0, 0, 0, 0.10),
+        inset 0 1px 0 rgba(255, 255, 255, 0.35);
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+
+/* =========================================================
+   ✨ TITLE
+   ========================================================= */
+
+.subscreen-header h2 {
+
+    margin: 0;
+
+    width: 100%;
+
+    text-align: center;
+
+   .subscreen-header h2 {
+    font-family: "DM Serif Display", Georgia, serif;
+}
+
+    /*
+       Responsive font size.
+
+       Small phones = smaller
+       Large phones = medium
+       Tablets = larger
+    */
+
+    font-size: clamp(
+        17px,
+        4.8vw,
+        27px
+    );
+
+    font-weight: 400;
+
+    line-height: 1.15;
+
+    letter-spacing: 0.5px;
+
+    /*
+       IMPORTANT:
+       Allow titles to wrap.
+    */
+
+    white-space: normal;
+
+    overflow: visible;
+
+    text-overflow: clip;
+
+    overflow-wrap: anywhere;
+
+    word-break: normal;
+
+    text-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+
+/* =========================================================
+   ◀ BACK BUTTON
+   ========================================================= */
+
+.subscreen-header .back-button {
+
+    position: absolute;
+
+    left: 10px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: 0;
+
+    border-radius: 12px;
+
+    font-size: 23px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    background:
+        rgba(255, 255, 255, 0.25);
+
+    box-shadow:
+        0 4px 10px rgba(0, 0, 0, 0.10);
+}
+
+
+/* =========================================================
+   📱 VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+    .subscreen-header {
+
+        min-height: 52px;
+
+        padding:
+            8px 48px;
+
+        margin-bottom: 9px;
+
+        border-radius: 14px;
+    }
+
+    .subscreen-header h2 {
+
+        font-size: clamp(
+            15px,
+            5vw,
+            19px
+        );
+
+        line-height: 1.15;
+
+        letter-spacing: 0.3px;
+    }
+
+    .subscreen-header .back-button {
+
+        left: 7px;
+
+        width: 35px;
+        height: 35px;
+
+        border-radius: 10px;
+
+        font-size: 20px;
+    }
+}
+
+
+/* =========================================================
+   📱 NORMAL PHONES
+   ========================================================= */
+
+@media (min-width: 361px) and (max-width: 600px) {
+
+    .subscreen-header {
+
+        min-height: 54px;
+
+        padding:
+            9px 52px;
+
+        border-radius: 15px;
+    }
+
+    .subscreen-header h2 {
+
+        font-size: clamp(
+            17px,
+            4.8vw,
+            22px
+        );
+
+        line-height: 1.15;
+    }
+}
+
+
+/* =========================================================
+   📱 TABLETS
+   ========================================================= */
+
+@media (min-width: 601px) {
+
+    .subscreen-header {
+
+        min-height: 62px;
+
+        padding:
+            11px 64px;
+
+        border-radius: 18px;
+    }
+
+    .subscreen-header h2 {
+
+        font-size: clamp(
+            21px,
+            3vw,
+            27px
+        );
+
+        line-height: 1.15;
+    }
+
+    .subscreen-header .back-button {
+
+        width: 44px;
+        height: 44px;
+
+        font-size: 25px;
+    }
+}
+
+/* ======================================================
+   🍓 HOME TOPBAR — COINS & SETTINGS SPACING
+   ====================================================== */
+
+.home-topbar {
+    gap: 145px;
+}
+
+.coin-display {
+    margin-right: 6px;
+}
+
+.settings-btn {
+    margin-left: 6px;
+}
+
+/* ======================================================
+   📱 MOBILE FRUIT SLIDING
+   ====================================================== */
+
+#gameScreen canvas {
+    touch-action: none !important;
+}
+
+/* ======================================================
+   🍓 FRUITY MERGE POP
+   COMFORTAA — SUBSCREEN TITLES
+   ====================================================== */
+
+.subscreen-header h2,
+#missionsScreen .subscreen-header h2,
+#dailyScreen .subscreen-header h2,
+#achievementsScreen .subscreen-header h2,
+#themesScreen .subscreen-header h2,
+#howToPlayScreen .subscreen-header h2 {
+
+    font-family:
+        "Comfortaa",
+        "Trebuchet MS",
+        sans-serif !important;
+
+    font-size:
+        clamp(24px, 5vw, 34px) !important;
+
+    font-weight:
+        700 !important;
+
+    letter-spacing:
+        0.8px !important;
+
+    color:
+        #ffffff !important;
+
+    text-align:
+        center;
+
+    line-height:
+        1.15 !important;
+
+    white-space:
+        nowrap;
+
+    text-shadow:
+        0 3px 0 #d85b78,
+        0 5px 9px rgba(0, 0, 0, 0.18);
+
+    -webkit-font-smoothing:
+        antialiased;
+}
+
+
+/* ======================================================
+   📱 PHONE
+   ====================================================== */
+
+@media (max-width: 600px) {
+
+    .subscreen-header h2 {
+
+        font-size:
+            clamp(21px, 6.5vw, 29px) !important;
+
+        letter-spacing:
+            0.5px !important;
+
+        white-space:
+            nowrap;
+    }
+}
+
+
+/* ======================================================
+   📱 TABLET
+   ====================================================== */
+
+@media (min-width: 601px) and (max-width: 1100px) {
+
+    .subscreen-header h2 {
+
+        font-size:
+            clamp(25px, 4vw, 34px) !important;
+    }
+}

@@ -1,0 +1,864 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  >
+
+  <title>FRUITY MERGE POP</title>
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+>
+</head>
+
+
+<body>
+
+  <div id="app">
+
+
+    <!-- ======================================================
+         BACKGROUND MUSIC
+    ======================================================= -->
+
+    <audio
+      id="backgroundMusic"
+      src="./assets/sounds/background.mp3"
+      loop
+      preload="auto"
+    ></audio>
+
+
+    <!-- ======================================================
+         HOME SCREEN
+    ======================================================= -->
+
+    <section
+      id="homeScreen"
+      class="screen home-screen"
+    >
+
+      <!-- Top Bar -->
+      <div class="home-topbar">
+
+        <!-- Coins -->
+        <div class="coin-display">
+
+          <span class="coin-icon">🪙</span>
+
+          <span id="homeCoins">0</span>
+
+        </div>
+
+
+        <!-- Settings -->
+        <button
+          id="settingsButton"
+          class="settings-btn"
+          aria-label="Settings"
+        >
+          ⚙️
+        </button>
+
+      </div>
+
+
+      <!-- ==================================================
+           GAME LOGO
+      =================================================== -->
+
+      <div class="home-brand">
+    <img src="assets/images/fruity-merge-pop-logo.png"
+         alt="Fruity Merge Pop"
+         class="game-logo">
+</div>
+
+      <!-- ==================================================
+           MAIN PLAY BUTTON
+      =================================================== -->
+
+      <button
+        id="playButton"
+        class="primary play-button"
+      >
+
+        <span class="play-icon">▶</span>
+
+        PLAY
+
+      </button>
+
+
+  <!-- ==================================================
+       SECONDARY BUTTONS
+  =================================================== -->
+
+
+  <div class="row-buttons">
+
+
+    <button
+      id="missionsButton"
+      class="home-option"
+    >
+
+      <span>🎯</span>
+
+      <strong>
+        Missions
+      </strong>
+
+    </button>
+
+
+    <button
+      id="dailyButton"
+      class="home-option"
+    >
+
+      <span>🎁</span>
+
+      <strong>
+        Daily
+      </strong>
+
+    </button>
+
+
+  </div>
+
+  <!-- ==================================================
+     NEW MENU OPTIONS
+=================================================== -->
+
+
+<div class="row-buttons new-menu-row">
+
+  <button
+    id="achievementsButton"
+    class="home-option"
+  >
+
+    <span>🏆</span>
+
+    <strong>
+      Achievements
+    </strong>
+
+  </button>
+
+  <button
+    id="themesButton"
+    class="home-option"
+  >
+
+    <span>🎨</span>
+
+    <strong>
+      Themes
+    </strong>
+
+  </button>
+
+  </div>
+
+  <div class="row-buttons new-menu-row">
+
+  <button
+    id="howToPlayButton"
+    class="home-option"
+  >
+
+    <span>📖</span>
+
+    <strong>
+      How to Play
+    </strong>
+
+  </button>
+
+
+</div>
+
+      <!-- ==================================================
+           HIDDEN COMPATIBILITY DATA
+      =================================================== -->
+
+      <div
+        class="hidden-home-data"
+        aria-hidden="true"
+      >
+
+        <span id="homeHighScore">0</span>
+
+        <span id="homeLevel">1</span>
+
+      </div>
+
+    </section>
+
+
+    <!-- ======================================================
+         GAME SCREEN
+    ======================================================= -->
+
+    <section
+      id="gameScreen"
+      class="screen hidden"
+    >
+
+      <!-- GAME HEADER -->
+
+      <div class="game-header">
+
+
+        <!-- Home -->
+        <button
+          id="homeButton"
+          class="icon-btn"
+          aria-label="Home"
+        >
+          🏠
+        </button>
+
+
+        <!-- Score -->
+        <div class="game-stat">
+
+          <small>
+            Score
+          </small>
+
+          <b id="score">
+            0
+          </b>
+
+        </div>
+
+
+        <!-- Best -->
+        <div class="game-stat">
+
+          <small>
+            Best
+          </small>
+
+          <b id="gameHighScore">
+            0
+          </b>
+
+        </div>
+
+
+        <!-- Coins -->
+        <div class="game-stat">
+
+          <small>
+            Coins
+          </small>
+
+          <b>
+
+            🪙
+
+            <span id="coins">
+              0
+            </span>
+
+          </b>
+
+        </div>
+
+
+        <!-- Pause -->
+        <button
+          id="pauseButton"
+          class="icon-btn"
+          aria-label="Pause"
+        >
+          ⏸
+        </button>
+
+      </div>
+
+
+      <!-- NEXT FRUIT -->
+
+      <div class="next">
+
+        NEXT
+
+        <span id="nextFruit">
+          🍒
+        </span>
+
+      </div>
+
+
+      <!-- GAME CANVAS -->
+
+      <canvas
+        id="gameCanvas"
+        width="400"
+        height="650"
+      ></canvas>
+
+    </section>
+
+
+    <!-- ======================================================
+         MISSIONS SCREEN
+    ======================================================= -->
+
+    <section
+      id="missionsScreen"
+      class="screen hidden"
+    >
+
+      <div class="subscreen-header">
+
+        <button
+          id="missionsBack"
+          class="back-button"
+        >
+          ←
+        </button>
+
+        <h2>
+          🎯 Missions
+        </h2>
+
+      </div>
+
+
+      <div id="missionList"></div>
+
+    </section>
+
+
+    <!-- ======================================================
+         DAILY SCREEN
+    ======================================================= -->
+
+    <section
+      id="dailyScreen"
+      class="screen hidden"
+    >
+
+      <div class="subscreen-header">
+
+        <button
+          id="dailyBack"
+          class="back-button"
+        >
+          ←
+        </button>
+
+        <h2>
+          🎁 Daily Reward
+        </h2>
+
+      </div>
+
+
+      <div class="daily-card">
+
+        <div id="dailyStreak"></div>
+
+        <div id="dailyReward"></div>
+
+        <button
+          id="claimDaily"
+          class="primary"
+        >
+          CLAIM
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- ======================================================
+         ACHIEVEMENTS SCREEN
+    ======================================================= -->
+
+    <section
+      id="achievementsScreen"
+      class="screen hidden"
+    >
+
+      <div class="subscreen-header">
+
+        <button
+          id="achievementsBack"
+          class="back-button"
+        >
+          ←
+        </button>
+
+        <h2>
+          🏆 Achievements
+        </h2>
+
+      </div>
+
+      <div id="achievementList"></div>
+
+    </section>
+
+
+    <!-- ======================================================
+         THEMES SCREEN
+    ======================================================= -->
+
+    <section
+      id="themesScreen"
+      class="screen hidden"
+    >
+
+      <div class="subscreen-header">
+
+        <button
+          id="themesBack"
+          class="back-button"
+        >
+          ←
+        </button>
+
+        <h2>
+          🎨 Themes
+        </h2>
+
+      </div>
+
+      <div id="themeList"></div>
+
+    </section>
+
+
+   <!-- ======================================================
+     HOW TO PLAY SCREEN
+     ====================================================== -->
+
+<section id="howToPlayScreen" class="screen hidden">
+
+    <div class="subscreen-header">
+        <button id="howToPlayBack" class="back-button">←</button>
+
+        <h2>HOW TO PLAY</h2>
+    </div>
+
+
+    <div class="how-to-play-content">
+
+        <!-- ==================================================
+             1. DROP A FRUIT
+             ================================================== -->
+
+        <div class="how-card">
+
+            <div class="how-icon">
+                🍓
+            </div>
+
+            <div>
+
+                <strong>
+                    1. DROP A FRUIT
+                </strong>
+
+                <p>
+                    Tap or drag to choose where you want to drop your fruit.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- ==================================================
+             2. MERGE FRUITS
+             ================================================== -->
+
+        <div class="how-card">
+
+            <div class="how-icon">
+                🍊
+            </div>
+
+            <div>
+
+                <strong>
+                    2. MERGE FRUITS
+                </strong>
+
+                <p>
+                    Match two identical fruits to merge them into a bigger fruit!
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- ==================================================
+             3. KEEP MERGING
+             ================================================== -->
+
+        <div class="how-card">
+
+            <div class="how-icon">
+                🍉
+            </div>
+
+            <div>
+
+                <strong>
+                    3. KEEP MERGING
+                </strong>
+
+                <p>
+                    Create bigger and bigger fruits to earn more points and coins.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- ==================================================
+             4. DON'T OVERFLOW
+             ================================================== -->
+
+        <div class="how-card">
+
+            <div class="how-icon">
+                ⚠️
+            </div>
+
+            <div>
+
+                <strong>
+                    4. DON'T OVERFLOW
+                </strong>
+
+                <p>
+                    Be careful! Don't let the fruits pile up beyond the danger line.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- ==================================================
+             5. EARN COINS
+             ================================================== -->
+
+        <div class="how-card">
+
+            <div class="how-icon">
+                🪙
+            </div>
+
+            <div>
+
+                <strong>
+                    5. EARN COINS
+                </strong>
+
+                <p>
+                    Use your coins to unlock cute fruit styles in the Shop.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- ==================================================
+             TIP
+             ================================================== -->
+
+        <div class="how-tip-box">
+
+            <span>
+                💡
+            </span>
+
+            <p>
+
+                <strong>
+                    TIP!
+                </strong>
+
+                <br>
+
+                Plan your drops carefully and create chain merges for a higher score!
+
+            </p>
+
+        </div>
+
+
+        <!-- ==================================================
+             🍒 FRUIT MERGE SEQUENCE
+             ================================================== -->
+
+        <div class="fruit-sequence">
+
+            <div class="fruit-sequence-title">
+                🍒 FRUIT MERGE SEQUENCE
+            </div>
+
+
+            <div class="fruit-sequence-list">
+
+                <span>🍒 Cherry</span>
+                <span>→</span>
+
+                <span>🍓 Strawberry</span>
+                <span>→</span>
+
+                <span>🍊 Orange</span>
+                <span>→</span>
+
+                <span>🍎 Apple</span>
+                <span>→</span>
+
+                <span>🍐 Pear</span>
+                <span>→</span>
+
+                <span>🍑 Peach</span>
+                <span>→</span>
+
+                <span>🍉 Watermelon</span>
+                <span>→</span>
+
+                <span>🍈 Melon</span>
+                <span>→</span>
+
+                <span>🍍 Pineapple</span>
+                <span>→</span>
+
+                <span>🥭 Mango</span>
+                <span>→</span>
+
+                <span>🥝 Kiwi</span>
+                <span>→</span>
+
+                <span>🍇 Grapes</span>
+                <span>→</span>
+
+                <span>🍌 Banana</span>
+                <span>→</span>
+
+                <span>🥥 Coconut</span>
+                <span>→</span>
+
+                <span>🍋 Lemon</span>
+                <span>→</span>
+
+                <span>🫐 Blueberry</span>
+                <span>→</span>
+
+                <span>🥑 Avocado</span>
+                <span>→</span>
+
+                <span>Papaya</span>
+                <span>→</span>
+
+                <span>✨ Golden Fruit</span>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+    <!-- ======================================================
+         SETTINGS SCREEN
+    ======================================================= -->
+
+    <section
+      id="settingsScreen"
+      class="screen hidden"
+    >
+
+      <div class="subscreen-header">
+
+        <button
+          id="settingsBack"
+          class="back-button"
+        >
+          ←
+        </button>
+
+        <h2>
+          ⚙️ Settings
+        </h2>
+
+      </div>
+
+
+      <div class="settings-card">
+
+
+        <!-- Sound -->
+
+        <div class="setting-row">
+
+          <div>
+
+            <strong>
+              Sound
+            </strong>
+
+            <small>
+              Game sounds
+            </small>
+
+          </div>
+
+
+          <button
+            id="settingsSoundButton"
+            class="setting-toggle"
+          >
+            🔊
+          </button>
+
+        </div>
+
+
+        <!-- Music -->
+
+        <div class="setting-row">
+
+          <div>
+
+            <strong>
+              Music
+            </strong>
+
+            <small>
+              Background music
+            </small>
+
+          </div>
+
+
+          <button
+            id="settingsMusicButton"
+            class="setting-toggle"
+          >
+            🎵
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ======================================================
+         RESULTS / GAME OVER SCREEN
+    ======================================================= -->
+
+    <section
+      id="resultsScreen"
+      class="screen hidden"
+    >
+
+
+      <div class="result-icon">
+        🏆
+      </div>
+
+
+      <h2>
+        Game Over
+      </h2>
+
+
+      <p class="big-score">
+
+        <span id="finalScore">
+          0
+        </span>
+
+        points
+
+      </p>
+
+
+      <p
+        id="newBest"
+        class="new-best hidden"
+      >
+        NEW BEST!
+      </p>
+
+
+      <p>
+
+        🪙
+
+        <span id="earnedCoins">
+          0
+        </span>
+
+        coins earned
+
+      </p>
+
+
+      <!-- Home -->
+
+      <button
+        id="resultHome"
+        class="primary"
+      >
+        🏠 Home
+      </button>
+
+
+      <!-- Play Again -->
+
+      <button
+        id="resultAgain"
+      >
+        ▶ Play Again
+      </button>
+
+
+    </section>
+
+
+  </div>
+
+
+  <!-- ======================================================
+       MAIN JAVASCRIPT
+  ======================================================= -->
+
+  <script
+    type="module"
+    src="js/main.js"
+  ></script>
+</body>
+
+</html>
